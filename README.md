@@ -71,3 +71,5 @@ Assets/
 ## License
 
 This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
+
+Note: Test commit from Jonathan to verify Git push access.
