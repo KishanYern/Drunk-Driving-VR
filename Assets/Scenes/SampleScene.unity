@@ -1776,6 +1776,7 @@ GameObject:
   - component: {fileID: 1093390592}
   - component: {fileID: 1093390594}
   - component: {fileID: 1093390593}
+  - component: {fileID: 2093390594}
   m_Layer: 0
   m_Name: DoorHandel
   m_TagString: Untagged
@@ -1798,7 +1799,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1570518228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1093390593
 --- !u!114 &1093390593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1838,7 +1838,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1093390594
+--- !u!114 &2093390594
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
