@@ -500,7 +500,6 @@ GameObject:
   - component: {fileID: 157569992}
   - component: {fileID: 157569991}
   - component: {fileID: 157569995}
-  - component: {fileID: 157569996}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -1835,7 +1834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VehicleManager
   playerRig: {fileID: 225836870}
   carController: {fileID: 1561745844}
-  seatAnchor: {fileID: 2037442433}
+  seatAnchor: {fileID: 2107758732}
   exitDistance: 1.5
   exitOnRightSide: 1
   ovrPlayerController: {fileID: 0}
