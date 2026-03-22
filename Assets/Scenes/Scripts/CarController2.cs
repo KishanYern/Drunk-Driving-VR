@@ -194,8 +194,15 @@ public class CarController2_VR : MonoBehaviour
         float leftTrigger = 0f;
 
         // --- ACCELERATION (right trigger) ---
-        if (rightController.TryGetFeatureValue(CommonUsages.trigger, out rightTrigger)
-            && rightTrigger > triggerThreshold)
+        bool hasRightTrigger = rightController.TryGetFeatureValue(CommonUsages.trigger, out rightTrigger) && rightTrigger > triggerThreshold;
+#if UNITY_EDITOR || UNITY_STANDALONE
+        var kb = UnityEngine.InputSystem.Keyboard.current;
+        if (kb != null)
+        {
+            if (kb.wKey.isPressed || kb.upArrowKey.isPressed) { hasRightTrigger = true; rightTrigger = 1f; }
+        }
+#endif
+        if (hasRightTrigger)
         {
             CancelInvoke("DecelerateCar");
             deceleratingCar = false;
@@ -203,21 +210,34 @@ public class CarController2_VR : MonoBehaviour
         }
 
         // --- BRAKE / REVERSE (left trigger) ---
-        if (leftController.TryGetFeatureValue(CommonUsages.trigger, out leftTrigger)
-            && leftTrigger > triggerThreshold)
+        bool hasLeftTrigger = leftController.TryGetFeatureValue(CommonUsages.trigger, out leftTrigger) && leftTrigger > triggerThreshold;
+#if UNITY_EDITOR || UNITY_STANDALONE
+        if (kb != null)
+        {
+            if (kb.sKey.isPressed || kb.downArrowKey.isPressed) { hasLeftTrigger = true; leftTrigger = 1f; }
+        }
+#endif
+        if (hasLeftTrigger)
         {
             CancelInvoke("DecelerateCar");
             deceleratingCar = false;
             GoReverse();
         }
 
-        // --- STEERING — always driven by the physical steering wheel ---
+        // --- STEERING â€” always driven by the physical steering wheel ---
         // externalSteeringInput is updated every frame by SteeringWheelInteraction_OVR
-        // (including while self-centring after release), so we just apply it directly.
-        ApplyExternalSteering(externalSteeringInput);
+        float finalSteering = externalSteeringInput;
+#if UNITY_EDITOR || UNITY_STANDALONE
+        if (kb != null)
+        {
+            if (kb.aKey.isPressed || kb.leftArrowKey.isPressed) finalSteering = -1f;
+            if (kb.dKey.isPressed || kb.rightArrowKey.isPressed) finalSteering = 1f;
+        }
+#endif
+        ApplyExternalSteering(finalSteering);
 
         // --- DECELERATION when both triggers released ---
-        if (rightTrigger <= triggerThreshold && leftTrigger <= triggerThreshold)
+        if (!hasRightTrigger && !hasLeftTrigger)
         {
             ThrottleOff();
             if (!deceleratingCar)

@@ -49,6 +49,16 @@ public class VehicleManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        // Keyboard fallback to enter/exit the car without VR hands
+        var kb = UnityEngine.InputSystem.Keyboard.current;
+        if (kb != null && kb.eKey.wasPressedThisFrame)
+        {
+            ToggleVehicle();
+        }
+    }
+
     /// <summary>Toggle between entering and exiting the car.</summary>
     public void ToggleVehicle()
     {
