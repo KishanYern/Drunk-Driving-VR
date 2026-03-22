@@ -1832,7 +1832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57b8771be0402e4ea5a216e32d53584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VehicleManager
-  playerRig: {fileID: 225836870}
+  playerRig: {fileID: 2079996039}
   carController: {fileID: 1561745844}
   seatAnchor: {fileID: 2107758732}
   exitDistance: 1.5
