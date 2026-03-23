@@ -1,0 +1,40 @@
+﻿* 0c7f5ab (upstream/jon-map-dev, kishanyern/jon-map-dev) Add cartoon city environment and initial CityMap scene
+* 57eeb7d (upstream/john-readme-test, kishanyern/john-readme-test) Test commit: verify git push access
+* 290e8d6 (HEAD -> master, upstream/master, upstream/long, origin/master, kishanyern/master, kishanyern/long) Update SpecialLight2.mat
+*   e6ed72f Merge pull request #4 from Monstucture/revert-3-Aidan
+|\  
+| * fb14d03 Revert "Change cylinder colors"
+|/  
+*   883e194 Merge pull request #3 from Monstucture/Aidan
+|\  
+| *   05b3808 (origin/Aidan) Merge branch 'master' into Aidan
+| |\  
+| |/  
+|/|   
+* |   77f53d2 Merge branch 'master' of https://github.com/Monstucture/DrunkDrivingVR
+|\ \  
+| * \   38fcc23 Merge pull request #2 from Monstucture/long
+| |\ \  
+| | * \   a940639 Merge branch 'master' into long
+| | |\ \  
+| | |/ /  
+| |/| |   
+| | * | d233b18 (origin/long) Added Steering Interaction
+* | | | fa2e398 Rolled Back messed up
+|/ / /  
+* | | 2fab616 Add project README with overview, controls, and setup instructions
+* | |   a6ea38d (feature/alcohol-bottle) Merge pull request #1 from Monstucture/feature/alcohol-bottle
+|\ \ \  
+| |/ /  
+|/| |   
+| * | c8d45ee (origin/feature/alcohol-bottle) Update Assets/Scenes/Scripts/DrunkEffect.cs
+| * | e4f2158 Update Assets/Scenes/SampleScene.unity
+| * | 45fa503 Add drink detection and drunk camera wobble effect
+| * | 9aa0fd3 Add grabbable alcohol bottle to scene
+|/ /  
+| * 10167d4 inital
+|/  
+* cc93d9e update OVR player controller
+* 3d65f11 everything else
+* f63fa4a initial attributes and ignore
+* db7d747 (origin/trejo, origin/main) Initial commit
