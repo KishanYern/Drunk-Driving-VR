@@ -1,3 +1,8 @@
+/*
+VR ADAPTATION: Modified for Meta Quest 3 by [Your Name]
+Original script by Mena - Modified for VR hand controller input
+*/
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -111,7 +116,9 @@ public class CarController2_VR : MonoBehaviour
     private InputDevice leftController;
     private bool controllersInitialized = false;
 
-
+    // Torque per wheel. Old value of 50 was far too weak for a 500 kg body.
+    // 200 gives 400 Nm/wheel = 1600 Nm total — snappy but not spinny.
+    // Raise if still sluggish, lower if wheels spin wildly on the spot.
     private const float TORQUE_SCALE = 200f;
 
     void Start()
@@ -194,15 +201,8 @@ public class CarController2_VR : MonoBehaviour
         float leftTrigger = 0f;
 
         // --- ACCELERATION (right trigger) ---
-        bool hasRightTrigger = rightController.TryGetFeatureValue(CommonUsages.trigger, out rightTrigger) && rightTrigger > triggerThreshold;
-#if UNITY_EDITOR || UNITY_STANDALONE
-        var kb = UnityEngine.InputSystem.Keyboard.current;
-        if (kb != null)
-        {
-            if (kb.wKey.isPressed || kb.upArrowKey.isPressed) { hasRightTrigger = true; rightTrigger = 1f; }
-        }
-#endif
-        if (hasRightTrigger)
+        if (rightController.TryGetFeatureValue(CommonUsages.trigger, out rightTrigger)
+            && rightTrigger > triggerThreshold)
         {
             CancelInvoke("DecelerateCar");
             deceleratingCar = false;
@@ -210,14 +210,8 @@ public class CarController2_VR : MonoBehaviour
         }
 
         // --- BRAKE / REVERSE (left trigger) ---
-        bool hasLeftTrigger = leftController.TryGetFeatureValue(CommonUsages.trigger, out leftTrigger) && leftTrigger > triggerThreshold;
-#if UNITY_EDITOR || UNITY_STANDALONE
-        if (kb != null)
-        {
-            if (kb.sKey.isPressed || kb.downArrowKey.isPressed) { hasLeftTrigger = true; leftTrigger = 1f; }
-        }
-#endif
-        if (hasLeftTrigger)
+        if (leftController.TryGetFeatureValue(CommonUsages.trigger, out leftTrigger)
+            && leftTrigger > triggerThreshold)
         {
             CancelInvoke("DecelerateCar");
             deceleratingCar = false;
@@ -226,18 +220,11 @@ public class CarController2_VR : MonoBehaviour
 
         // --- STEERING — always driven by the physical steering wheel ---
         // externalSteeringInput is updated every frame by SteeringWheelInteraction_OVR
-        float finalSteering = externalSteeringInput;
-#if UNITY_EDITOR || UNITY_STANDALONE
-        if (kb != null)
-        {
-            if (kb.aKey.isPressed || kb.leftArrowKey.isPressed) finalSteering = -1f;
-            if (kb.dKey.isPressed || kb.rightArrowKey.isPressed) finalSteering = 1f;
-        }
-#endif
-        ApplyExternalSteering(finalSteering);
+        // (including while self-centring after release), so we just apply it directly.
+        ApplyExternalSteering(externalSteeringInput);
 
         // --- DECELERATION when both triggers released ---
-        if (!hasRightTrigger && !hasLeftTrigger)
+        if (rightTrigger <= triggerThreshold && leftTrigger <= triggerThreshold)
         {
             ThrottleOff();
             if (!deceleratingCar)
@@ -251,9 +238,17 @@ public class CarController2_VR : MonoBehaviour
     private void ApplyExternalSteering(float normalizedInput)
     {
         steeringAxis = Mathf.Clamp(normalizedInput, -1f, 1f);
-        float angle = steeringAxis * maxSteeringAngle;
-        frontLeftCollider.steerAngle = Mathf.Lerp(frontLeftCollider.steerAngle, angle, steeringSpeed);
-        frontRightCollider.steerAngle = Mathf.Lerp(frontRightCollider.steerAngle, angle, steeringSpeed);
+
+        // Power curve: makes small inputs feel snappier without over-rotating at full lock.
+        // Exponent 0.7 = more responsive near centre; raise toward 1.0 for linear, lower for more snap.
+        float curved = Mathf.Sign(steeringAxis) * Mathf.Pow(Mathf.Abs(steeringAxis), 0.7f);
+
+        float targetAngle = curved * maxSteeringAngle;
+
+        // Snap directly — no lerp. The physical wheel IS the input device, so
+        // smoothing here just adds lag. Remove steeringSpeed entirely for arcade feel.
+        frontLeftCollider.steerAngle = targetAngle;
+        frontRightCollider.steerAngle = targetAngle;
     }
 
     public void CarSpeedUI()

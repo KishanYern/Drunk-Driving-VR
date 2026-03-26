@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7623801743900411247}
   - component: {fileID: 4868391589083824943}
   - component: {fileID: 3606862572115784031}
+  - component: {fileID: 4579325314536185235}
   m_Layer: 0
   m_Name: Test_NPC
   m_TagString: Untagged
@@ -196,3 +197,18 @@ MonoBehaviour:
   playerCar: {fileID: 0}
   detectionRadius: 15
   repulsionStrength: 50
+--- !u!114 &4579325314536185235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5687571116273449933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153b46b7da70298429b9064ebbc2aa41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCHitDetector
+  carTag: PlayerCar
+  minImpactSpeed: 3
+  destroyDelay: 2

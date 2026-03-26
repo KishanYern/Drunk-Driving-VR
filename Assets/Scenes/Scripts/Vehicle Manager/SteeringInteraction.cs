@@ -8,9 +8,9 @@ public class SteeringWheelInteraction_OVR : MonoBehaviour
     [Header("Steering Settings")]
     public float grabDistance = 0.2f;
     [Tooltip("Total degrees the physical wheel can rotate each way (e.g. 450 = 1.25 turns)")]
-    public float maxSteeringAngle = 450f;
+    public float maxSteeringAngle = 90f;
     [Tooltip("How quickly the wheel self-centres after release (degrees per second)")]
-    public float centreReturnSpeed = 180f;
+    public float centreReturnSpeed = 360f;
 
     [Header("Hand Lock Settings")]
     [Tooltip("Assign the left hand visual GameObject (the rendered hand mesh, not the anchor)")]
