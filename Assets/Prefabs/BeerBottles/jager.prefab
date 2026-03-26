@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 1838190339140479218}
   - component: {fileID: 1377148338286247403}
   - component: {fileID: 406425402610672122}
+  - component: {fileID: 3253843913287411471}
   m_Layer: 0
   m_Name: jager
   m_TagString: Untagged
@@ -116,14 +117,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4800959366724478379}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -35.09, y: 0.93799996, z: -67.508}
-  m_LocalScale: {x: 0.10000003, y: 0.1, z: 0.10000003}
+  m_LocalScale: {x: 0.10000004, y: 0.1, z: 0.10000004}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5331840801568218794}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!136 &1377148338286247403
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -139,14 +140,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 1
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.05
-  m_Height: 0.3
+  m_Radius: 0.5
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!54 &406425402610672122
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -170,7 +171,32 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
+  m_IsKinematic: 1
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
+--- !u!114 &3253843913287411471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4800959366724478379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32e660be3990604d94a94c04c935a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BottleGrabbable
+  bottleAnchor: {fileID: 0}
+  anchorPositionOffset: {x: 0.2, y: 0.05, z: 0.1}
+  anchorRotationOffset: {x: 0, y: 0, z: 0}
+  grabRadius: 0.35
+  gazeAngleThreshold: 25
+  flyDuration: 0.5
+  drinkRange: 0.25
+  drinkDuration: 1.5
+  drunkEffect: {fileID: 0}
+  throwThreshold: 1.5
+  showHighlight: 1
+  highlightMaterial: {fileID: 2100000, guid: fb2ab18a8d946034fa188ace09bfe055, type: 2}
+  attractReadyMaterial: {fileID: -876546973899608171, guid: ca2ed216f98028c4dae6c5224a952b3c, type: 3}

@@ -1,19 +1,16 @@
 using UnityEngine;
 
-/// <summary>
-/// Attach to props like lamp posts, traffic lights, bins, cones etc.
-/// Gives +10 flat points. Does NOT affect the combo multiplier.
-/// Tag the prop's GameObject with "Prop" (optional — the script uses layer/tag set below).
-/// </summary>
 [RequireComponent(typeof(Collider))]
 public class PropHitDetector : MonoBehaviour
 {
     [Header("Hit Settings")]
-    public string carTag        = "PlayerCar";
-    public float minImpactSpeed = 1f;   // lower than NPC — even a slow nudge should score
-
-    [Tooltip("Can this prop be hit multiple times (e.g. a cone that rolls), or only once (e.g. a fixed post)?")]
+    public string carTag = "PlayerCar";
+    public float minImpactSpeed = 1f;
     public bool oneHitOnly = true;
+
+    [Header("Sounds")]
+    [Tooltip("Metal crunch / snap sound for prop hits")]
+    public AudioClip[] propImpactClips;
 
     private bool hasBeenHit = false;
 
@@ -24,6 +21,13 @@ public class PropHitDetector : MonoBehaviour
         if (collision.relativeVelocity.magnitude < minImpactSpeed) return;
 
         hasBeenHit = true;
+
+        if (propImpactClips != null && propImpactClips.Length > 0)
+        {
+            AudioClip clip = propImpactClips[Random.Range(0, propImpactClips.Length)];
+            float vol = Mathf.Clamp01(collision.relativeVelocity.magnitude / 15f); // louder = faster hit
+            AudioSource.PlayClipAtPoint(clip, collision.contacts[0].point, vol);
+        }
 
         if (ScoreManager.Instance != null)
             ScoreManager.Instance.RegisterPropHit();
