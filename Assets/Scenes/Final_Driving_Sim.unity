@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &11981855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7721702838062432678, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &11981860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11981855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
+  carTag: PlayerCar
+  minImpactSpeed: 3
+  debrisPrefabs:
+  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
+  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
+  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
+  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
+  debrisCount: 3
+  explosionForce: 400
+  explosionUpward: 1.5
+  explosionRadius: 2
+  debrisLifetime: 4
+  breakParticlePrefab: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1001 &12559262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -317,58 +348,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7395740757595073220, guid: c9166299cd4a387478e0b9e6aa559634, type: 3}
   m_PrefabInstance: {fileID: 30709132}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &45898284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
---- !u!114 &61936481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
 --- !u!1001 &76146791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -501,6 +480,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7432873072367145151, guid: 4a69c044175a59e4b8a6cb4f9642f670, type: 3}
   m_PrefabInstance: {fileID: 82315165}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &83979985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3431808732843993743, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &83979990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83979985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
+  carTag: PlayerCar
+  minImpactSpeed: 3
+  debrisPrefabs:
+  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
+  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
+  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
+  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
+  debrisCount: 3
+  explosionForce: 400
+  explosionUpward: 1.5
+  explosionRadius: 2
+  debrisLifetime: 4
+  breakParticlePrefab: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1001 &84009893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -699,11 +709,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8324801919839020369, guid: 38549d7ea704f2240a0ad91ff968bf1d, type: 3}
   m_PrefabInstance: {fileID: 86882529}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &92484567 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 615704847000787462, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &92695990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -770,13 +775,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4461343702166512201, guid: 259f49cbcfd39ed4eb70f61fd89b598e, type: 3}
   m_PrefabInstance: {fileID: 92695990}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &109913876
+--- !u!1 &96325963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6356070864044166826, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &96325968
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462625}
+  m_GameObject: {fileID: 96325963}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
@@ -795,33 +805,7 @@ MonoBehaviour:
   explosionRadius: 2
   debrisLifetime: 4
   breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
---- !u!114 &120282266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!114 &128405949 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1120215264338122010, guid: 84f8715efdc929f4991ddc0a8e1c2e40, type: 3}
@@ -907,6 +891,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4782916983750509862, guid: 4be47a48b47d6224ebb6430561872389, type: 3}
   m_PrefabInstance: {fileID: 140360836}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &157539336 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2817073271103893169, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &157539341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157539336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
+  carTag: PlayerCar
+  minImpactSpeed: 3
+  debrisPrefabs:
+  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
+  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
+  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
+  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
+  debrisCount: 3
+  explosionForce: 400
+  explosionUpward: 1.5
+  explosionRadius: 2
+  debrisLifetime: 4
+  breakParticlePrefab: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1001 &163979485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1017,13 +1032,18 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!114 &203327585
+--- !u!1 &202934579 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1062647045379110948, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &202934584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462605}
+  m_GameObject: {fileID: 202934579}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
@@ -1042,7 +1062,7 @@ MonoBehaviour:
   explosionRadius: 2
   debrisLifetime: 4
   breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1001 &203406086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1108,11 +1128,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7261095064780495244, guid: ade3f441d04146e41b543404123042e3, type: 3}
   m_PrefabInstance: {fileID: 203406086}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &209359913 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6398666404079945713, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &213845912
 GameObject:
@@ -1366,32 +1381,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4657138528797371223, guid: 501cd8ab70a88714c8670cec8fb7f09c, type: 3}
   m_PrefabInstance: {fileID: 271588062}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &288222941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
 --- !u!114 &314904284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1445,13 +1434,18 @@ CharacterController:
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &334763003
+--- !u!1 &403391058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 385097659531425667, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &403391063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462616}
+  m_GameObject: {fileID: 403391058}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
@@ -1470,33 +1464,7 @@ MonoBehaviour:
   explosionRadius: 2
   debrisLifetime: 4
   breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
---- !u!114 &344408947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1 &429094065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,32 +1575,6 @@ Transform:
   - {fileID: 1142822073}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &464287205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
 --- !u!1001 &468129141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1699,6 +1641,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4167985245368723142, guid: 214952dcbf34cc642ae2e0301f4d2baf, type: 3}
   m_PrefabInstance: {fileID: 468129141}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &476008080 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 76594297953247538, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &476008085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476008080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
+  carTag: PlayerCar
+  minImpactSpeed: 3
+  debrisPrefabs:
+  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
+  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
+  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
+  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
+  debrisCount: 3
+  explosionForce: 400
+  explosionUpward: 1.5
+  explosionRadius: 2
+  debrisLifetime: 4
+  breakParticlePrefab: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+--- !u!1 &498595982 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4158935137615369786, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &498595987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498595982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
+  carTag: PlayerCar
+  minImpactSpeed: 3
+  debrisPrefabs:
+  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
+  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
+  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
+  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
+  debrisCount: 3
+  explosionForce: 400
+  explosionUpward: 1.5
+  explosionRadius: 2
+  debrisLifetime: 4
+  breakParticlePrefab: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1001 &534470214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2302,32 +2306,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4367462094998435233, guid: 1c79623e8e743f74d8df9f4d74eee85e, type: 3}
   m_PrefabInstance: {fileID: 626169444}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &631089934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
 --- !u!1 &634459132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,32 +2404,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4083655415428899220, guid: f36b354e3a528c643890d8e2b0fe6210, type: 3}
   m_PrefabInstance: {fileID: 661003587}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &666945305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
 --- !u!1001 &684200141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2518,158 +2470,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7850629602464813088, guid: 59e3340b20809524eaf42521077e16a7, type: 3}
   m_PrefabInstance: {fileID: 684200141}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &687720656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92484567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d3d97cc1aa5aaa4bbecbda7b0be19af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WallHitDetector
-  carTag: PlayerCar
-  minImpactSpeed: 2
-  hitCooldown: 2
---- !u!1 &690934344
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 690934345}
-  - component: {fileID: 690934347}
-  - component: {fileID: 690934346}
-  m_Layer: 3
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &690934345
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690934344}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1479437446}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &690934346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690934344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Button
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &690934347
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690934344}
-  m_CullTransparentMesh: 1
 --- !u!1 &691437589
 GameObject:
   m_ObjectHideFlags: 0
@@ -2968,26 +2768,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9185992779246544228, guid: 008228716434e64449b15a1cdf43b8f7, type: 3}
   m_PrefabInstance: {fileID: 722291717}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &741329232 stripped
+--- !u!1 &733664553 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 540102860208923012, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7465445376480033799, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
   m_PrefabInstance: {fileID: 2480691292029462602}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &741329236
+--- !u!114 &733664558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 741329232}
+  m_GameObject: {fileID: 733664553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d3d97cc1aa5aaa4bbecbda7b0be19af, type: 3}
+  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WallHitDetector
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
   carTag: PlayerCar
-  minImpactSpeed: 2
-  hitCooldown: 2
+  minImpactSpeed: 3
+  debrisPrefabs:
+  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
+  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
+  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
+  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
+  debrisCount: 3
+  explosionForce: 400
+  explosionUpward: 1.5
+  explosionRadius: 2
+  debrisLifetime: 4
+  breakParticlePrefab: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1001 &748399772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3054,6 +2865,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7439417107929141270, guid: 220ceddc72e5e86449f4b8159010e2c1, type: 3}
   m_PrefabInstance: {fileID: 748399772}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &766291558 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2316390709241053559, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &766291563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766291558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
+  carTag: PlayerCar
+  minImpactSpeed: 3
+  debrisPrefabs:
+  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
+  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
+  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
+  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
+  debrisCount: 3
+  explosionForce: 400
+  explosionUpward: 1.5
+  explosionRadius: 2
+  debrisLifetime: 4
+  breakParticlePrefab: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1001 &785293027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3252,11 +3094,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2927869342849513295, guid: ba1ec8d26bf7ea7439d5e4e22c05a024, type: 3}
   m_PrefabInstance: {fileID: 805883159}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &816732441 stripped
+--- !u!1 &813114734 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 5424671543225480648, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8311628453785741310, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
   m_PrefabInstance: {fileID: 2480691292029462602}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &813114739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813114734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
+  carTag: PlayerCar
+  minImpactSpeed: 3
+  debrisPrefabs:
+  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
+  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
+  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
+  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
+  debrisCount: 3
+  explosionForce: 400
+  explosionUpward: 1.5
+  explosionRadius: 2
+  debrisLifetime: 4
+  breakParticlePrefab: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1001 &823684738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3421,13 +3289,18 @@ Transform:
   - {fileID: 691437590}
   m_Father: {fileID: 7192818547993573696}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &850261651
+--- !u!1 &843159630 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8411356040509409820, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &843159635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462617}
+  m_GameObject: {fileID: 843159630}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
@@ -3446,7 +3319,7 @@ MonoBehaviour:
   explosionRadius: 2
   debrisLifetime: 4
   breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1001 &854216124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3577,32 +3450,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &880011812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
 --- !u!1001 &886154455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3709,13 +3556,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899215023}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.035579834, y: 0, z: 0, w: 0.9993668}
-  m_LocalPosition: {x: -0.605, y: 0.508, z: -0.16}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.605, y: 0.526, z: -0.16}
   m_LocalScale: {x: 1, y: 1, z: 0.96561}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9023549514490447330}
-  m_LocalEulerAnglesHint: {x: -4.078, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &910022118
 GameObject:
   m_ObjectHideFlags: 0
@@ -3795,21 +3642,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &937344425
+--- !u!1 &931864556 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3074009891604397870, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &931864561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 209359913}
+  m_GameObject: {fileID: 931864556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d3d97cc1aa5aaa4bbecbda7b0be19af, type: 3}
+  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WallHitDetector
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
   carTag: PlayerCar
-  minImpactSpeed: 2
-  hitCooldown: 2
+  minImpactSpeed: 3
+  debrisPrefabs:
+  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
+  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
+  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
+  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
+  debrisCount: 3
+  explosionForce: 400
+  explosionUpward: 1.5
+  explosionRadius: 2
+  debrisLifetime: 4
+  breakParticlePrefab: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1 &960709303
 GameObject:
   m_ObjectHideFlags: 0
@@ -3825,7 +3688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &960709304
 Transform:
   m_ObjectHideFlags: 0
@@ -3835,7 +3698,7 @@ Transform:
   m_GameObject: {fileID: 960709303}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.524, y: -0.165, z: 0}
+  m_LocalPosition: {x: 0.43, y: -0.368, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4172,6 +4035,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 421727862660504752, guid: ff60e6cbfd0ed6e4bace0ea2a2f5a238, type: 3}
   m_PrefabInstance: {fileID: 971373424}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &976794695 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5092661116180363644, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &976794700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976794695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
+  carTag: PlayerCar
+  minImpactSpeed: 3
+  debrisPrefabs:
+  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
+  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
+  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
+  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
+  debrisCount: 3
+  explosionForce: 400
+  explosionUpward: 1.5
+  explosionRadius: 2
+  debrisLifetime: 4
+  breakParticlePrefab: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1001 &982305716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4436,6 +4330,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4812610680532939403, guid: 25c809c91de3f8e4f86a1b5b98243795, type: 3}
   m_PrefabInstance: {fileID: 1021537011}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1041150551 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1705064492216777249, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1041150556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041150551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
+  carTag: PlayerCar
+  minImpactSpeed: 3
+  debrisPrefabs:
+  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
+  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
+  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
+  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
+  debrisCount: 3
+  explosionForce: 400
+  explosionUpward: 1.5
+  explosionRadius: 2
+  debrisLifetime: 4
+  breakParticlePrefab: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1001 &1059167853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4634,6 +4559,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6192229271122928639, guid: 66b9ae7a2ef71184585f8c3c41cc8474, type: 3}
   m_PrefabInstance: {fileID: 1074702294}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1088843420 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2348506741525162972, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1088843425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088843420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
+  carTag: PlayerCar
+  minImpactSpeed: 3
+  debrisPrefabs:
+  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
+  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
+  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
+  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
+  debrisCount: 3
+  explosionForce: 400
+  explosionUpward: 1.5
+  explosionRadius: 2
+  debrisLifetime: 4
+  breakParticlePrefab: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+--- !u!1 &1107696889 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 811608993539260530, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1107696894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107696889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
+  carTag: PlayerCar
+  minImpactSpeed: 3
+  debrisPrefabs:
+  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
+  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
+  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
+  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
+  debrisCount: 3
+  explosionForce: 400
+  explosionUpward: 1.5
+  explosionRadius: 2
+  debrisLifetime: 4
+  breakParticlePrefab: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1001 &1139955787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4840,32 +4827,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7605703664030204689, guid: 9dd4b9c4789cc5741827ec039a62ac65, type: 3}
   m_PrefabInstance: {fileID: 1146739695}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1148877681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
 --- !u!1001 &1158548913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5281,13 +5242,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5097849347648360512, guid: 19af21d258a8130459739f831d4562d2, type: 3}
   m_PrefabInstance: {fileID: 1246460099}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1275637021
+--- !u!1 &1264669268 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3059552168299293579, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1264669273
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462618}
+  m_GameObject: {fileID: 1264669268}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
@@ -5306,7 +5272,7 @@ MonoBehaviour:
   explosionRadius: 2
   debrisLifetime: 4
   breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1 &1284593138
 GameObject:
   m_ObjectHideFlags: 0
@@ -5323,7 +5289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1284593139
 Transform:
   m_ObjectHideFlags: 0
@@ -5357,6 +5323,37 @@ MonoBehaviour:
   dismissButton: {fileID: 1479437447}
   dismissHintText: {fileID: 8616779266531162026}
   fadeOutDuration: 0.5
+--- !u!1 &1294633238 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8849101292745913171, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1294633243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294633238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
+  carTag: PlayerCar
+  minImpactSpeed: 3
+  debrisPrefabs:
+  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
+  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
+  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
+  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
+  debrisCount: 3
+  explosionForce: 400
+  explosionUpward: 1.5
+  explosionRadius: 2
+  debrisLifetime: 4
+  breakParticlePrefab: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1001 &1322985117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5423,47 +5420,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 624367759318784293, guid: 7ad27798a56af29409bfd87e866e6458, type: 3}
   m_PrefabInstance: {fileID: 1322985117}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1375083714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 816732441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d3d97cc1aa5aaa4bbecbda7b0be19af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WallHitDetector
-  carTag: PlayerCar
-  minImpactSpeed: 2
-  hitCooldown: 2
---- !u!114 &1401292183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
 --- !u!1001 &1412290069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5662,127 +5618,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5658721572326524349, guid: e00c741ddd48e2c43adc6f82eba5abee, type: 3}
   m_PrefabInstance: {fileID: 1453163039}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1479437445
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1479437446}
-  - component: {fileID: 1479437449}
-  - component: {fileID: 1479437448}
-  - component: {fileID: 1479437447}
-  m_Layer: 3
-  m_Name: DismissButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1479437446
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479437445}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 690934345}
-  m_Father: {fileID: 8616779266531162025}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1479437447
+--- !u!114 &1479437447 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4650137044267240337, guid: 2f98930c075720742a099ba8ea6f8c53, type: 3}
+  m_PrefabInstance: {fileID: 8616779266531162024}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479437445}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1479437448}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1479437448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479437445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1479437449
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1479437445}
-  m_CullTransparentMesh: 1
 --- !u!1001 &1506190852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5849,32 +5695,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 862402628078015291, guid: 640b94cf88de4ef459ce14645b2736d9, type: 3}
   m_PrefabInstance: {fileID: 1506190852}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1517239170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
 --- !u!1001 &1568548647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5941,26 +5761,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1275798330469253710, guid: b5ff3e86b794f734c8537fdc57d393e6, type: 3}
   m_PrefabInstance: {fileID: 1568548647}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1583366130 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1228667110511143800, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1583366134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583366130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d3d97cc1aa5aaa4bbecbda7b0be19af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WallHitDetector
-  carTag: PlayerCar
-  minImpactSpeed: 2
-  hitCooldown: 2
 --- !u!1 &1599209109
 GameObject:
   m_ObjectHideFlags: 0
@@ -6010,32 +5810,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1600992986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
 --- !u!1001 &1618561258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6649,26 +6423,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 470282495854476251, guid: c872a4807289d164fafc5806b57b2b4d, type: 3}
   m_PrefabInstance: {fileID: 1849377458}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1857402815 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8563464024764306761, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1858446457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857402815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d3d97cc1aa5aaa4bbecbda7b0be19af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WallHitDetector
-  carTag: PlayerCar
-  minImpactSpeed: 2
-  hitCooldown: 2
 --- !u!1 &1860802103 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 804788266758048778, guid: 84f8715efdc929f4991ddc0a8e1c2e40, type: 3}
@@ -6707,26 +6461,6 @@ MonoBehaviour:
   overlapMask: 0
   compositionMode: 1
   _overlayEnabled: 1
---- !u!1 &1868864293 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6984101205845924992, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1868864297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868864293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d3d97cc1aa5aaa4bbecbda7b0be19af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WallHitDetector
-  carTag: PlayerCar
-  minImpactSpeed: 2
-  hitCooldown: 2
 --- !u!1001 &1900103139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6859,13 +6593,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4420605336174420872, guid: fb8ea0c192e419648934509b9be17423, type: 3}
   m_PrefabInstance: {fileID: 1907297241}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1910471327
+--- !u!1 &1915543723 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3190852972148255449, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1915543728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462611}
+  m_GameObject: {fileID: 1915543723}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
@@ -6884,7 +6623,7 @@ MonoBehaviour:
   explosionRadius: 2
   debrisLifetime: 4
   breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1 &1938965088
 GameObject:
   m_ObjectHideFlags: 0
@@ -6982,32 +6721,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2722735462829109436, guid: ccab6c8306a6dae4d9688eb372e59639, type: 3}
   m_PrefabInstance: {fileID: 1944579192}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1955207924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
 --- !u!1001 &1959236970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7206,32 +6919,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1905644249795406853, guid: d291b4f3e0bb5bf4baf2d8fc006701c5, type: 3}
   m_PrefabInstance: {fileID: 2022051814}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2022696713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
 --- !u!1001 &2029428638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7429,59 +7116,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2353656505555169697, guid: 4cd46b062033fff4391fcbb6bd8a242f, type: 3}
   m_PrefabInstance: {fileID: 2034461897}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2063484382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
---- !u!1 &2064182283 stripped
+--- !u!1 &2061031223 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 945874099578127717, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1835302969599479843, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
   m_PrefabInstance: {fileID: 2480691292029462602}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2064182287
+--- !u!114 &2061031228
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064182283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d3d97cc1aa5aaa4bbecbda7b0be19af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WallHitDetector
-  carTag: PlayerCar
-  minImpactSpeed: 2
-  hitCooldown: 2
---- !u!114 &2064965366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462609}
+  m_GameObject: {fileID: 2061031223}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
@@ -7500,7 +7146,38 @@ MonoBehaviour:
   explosionRadius: 2
   debrisLifetime: 4
   breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+--- !u!1 &2084268248 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3096778631181752605, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2084268253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084268248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
+  carTag: PlayerCar
+  minImpactSpeed: 3
+  debrisPrefabs:
+  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
+  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
+  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
+  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
+  debrisCount: 3
+  explosionForce: 400
+  explosionUpward: 1.5
+  explosionRadius: 2
+  debrisLifetime: 4
+  breakParticlePrefab: {fileID: 0}
+  breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1001 &2109344733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14615,9 +14292,9 @@ MonoBehaviour:
   RRWTireSkid: {fileID: 0}
   useUI: 0
   carSpeedText: {fileID: 0}
-  useSounds: 0
-  carEngineSound: {fileID: 0}
-  tireScreechSound: {fileID: 0}
+  useSounds: 1
+  carEngineSound: {fileID: 9023549514490447332}
+  tireScreechSound: {fileID: 9023549514490447331}
   carSpeed: 0
   isDrifting: 0
   isTractionLocked: 0
@@ -15319,182 +14996,118 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 56093810590315758, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 599233787471380136, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 873873377728032635, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 1110174331735793254, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 1466318466774636333, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 1611952551705585225, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 2348236346858997923, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 2393017860811073255, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 92730100749859428, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 2393017860811073255, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: m_ProvidesContacts
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 424300664687337195, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 429572671924077368, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 600692589888555783, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 638628776028518127, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 798750963451056677, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 871310598637802920, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 907588039819228270, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1378119731735806655, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1387525493992460574, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1752663609035843312, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2151374321956739818, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2272318763364057844, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2395715631937608884, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2447556959312456638, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2817235251079094569, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3325831327377066971, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3446940022808155572, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3795760967915915038, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4055384883966162937, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4206757655599211969, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519051236445116939, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757273433063430264, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5177330588368365422, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5751525304810100403, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5764043031389241234, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6008298416682877907, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 3005877853335315487, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 3021977787892661693, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 3029510550320087433, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 3129340051048515103, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 3133098797230264623, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 3643116428588529231, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 3849197928195507227, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 3908686797850658943, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 4367393833871759441, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 5124290070436504459, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 5171920532536000873, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 5409142220892078547, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 5967176954597044931, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 5971445730685051187, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
     - target: {fileID: 6013580640707119878, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       propertyPath: m_Name
       value: Demonstration
       objectReference: {fileID: 0}
-    - target: {fileID: 6466575870902022695, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6664098453878919468, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6710556649690517311, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7258522355597207429, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7401901539077854687, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7490437790741459796, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7495904982702995780, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7665445729090250154, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7797683359773986915, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8099980083109247203, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117353986357405363, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8173312316177687385, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8269013366455092091, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8275444480943043114, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8370855793006350048, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 6398629696667848804, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 7258989592527091877, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 7306199273886928255, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 8097682184655612071, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 8119369296377076610, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
     - target: {fileID: 8563879189506352214, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -15535,442 +15148,89 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8595789151736919597, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8617742293525589547, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8777683479838012362, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8927496185712630052, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8960313570725554208, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9017047911023512539, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9039005780158620940, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9120278859957413195, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 8632011609722528669, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 8862882560970766435, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+    - target: {fileID: 9141648010030332317, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      propertyPath: breakSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 4738425538977336024, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 6010136232529265674, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 1661133730119579589, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 3058442016844994536, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 8479409503173275306, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 6275430198469595985, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 999930239125812051, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 4128369576817728575, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 5648001211024772250, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 2823316643535099080, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 6429199876045653970, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 3068661287250221930, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 1762927557526357644, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 4755205499700168419, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 7472064201115482585, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 7532508599166771668, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 5389619513790019608, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 9080693150617499349, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 1176107710699202816, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 1084769820554236636, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-    - {fileID: 1999772742580110838, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6984101205845924992, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 811608993539260530, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1868864297}
-    - targetCorrespondingSourceObject: {fileID: 540102860208923012, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 1107696894}
+    - targetCorrespondingSourceObject: {fileID: 3096778631181752605, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 741329236}
-    - targetCorrespondingSourceObject: {fileID: 5424671543225480648, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 2084268253}
+    - targetCorrespondingSourceObject: {fileID: 2348506741525162972, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1375083714}
-    - targetCorrespondingSourceObject: {fileID: 6398666404079945713, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 1088843425}
+    - targetCorrespondingSourceObject: {fileID: 7465445376480033799, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 937344425}
-    - targetCorrespondingSourceObject: {fileID: 8563464024764306761, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 733664558}
+    - targetCorrespondingSourceObject: {fileID: 8411356040509409820, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1858446457}
-    - targetCorrespondingSourceObject: {fileID: 615704847000787462, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 843159635}
+    - targetCorrespondingSourceObject: {fileID: 1835302969599479843, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 687720656}
-    - targetCorrespondingSourceObject: {fileID: 945874099578127717, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 2061031228}
+    - targetCorrespondingSourceObject: {fileID: 6356070864044166826, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2064182287}
-    - targetCorrespondingSourceObject: {fileID: 1228667110511143800, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 96325968}
+    - targetCorrespondingSourceObject: {fileID: 8849101292745913171, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1583366134}
-    - targetCorrespondingSourceObject: {fileID: 916781748447883421, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 1294633243}
+    - targetCorrespondingSourceObject: {fileID: 1062647045379110948, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2480691292029462635}
-    - targetCorrespondingSourceObject: {fileID: 4203508257577854548, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 202934584}
+    - targetCorrespondingSourceObject: {fileID: 5092661116180363644, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2480691292029462634}
-    - targetCorrespondingSourceObject: {fileID: 4952684601026459352, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 976794700}
+    - targetCorrespondingSourceObject: {fileID: 2316390709241053559, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2480691292029462633}
-    - targetCorrespondingSourceObject: {fileID: 6558977508135259093, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 766291563}
+    - targetCorrespondingSourceObject: {fileID: 3059552168299293579, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2480691292029462632}
-    - targetCorrespondingSourceObject: {fileID: 2267503645681715261, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 1264669273}
+    - targetCorrespondingSourceObject: {fileID: 7721702838062432678, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2480691292029462631}
-    - targetCorrespondingSourceObject: {fileID: 2757009123817317054, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 11981860}
+    - targetCorrespondingSourceObject: {fileID: 2817073271103893169, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 109913876}
-    - targetCorrespondingSourceObject: {fileID: 4166119735936053153, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 157539341}
+    - targetCorrespondingSourceObject: {fileID: 76594297953247538, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 631089934}
-    - targetCorrespondingSourceObject: {fileID: 6618730130248390206, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 476008085}
+    - targetCorrespondingSourceObject: {fileID: 1705064492216777249, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2022696713}
-    - targetCorrespondingSourceObject: {fileID: 1659811690703414850, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 1041150556}
+    - targetCorrespondingSourceObject: {fileID: 8311628453785741310, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1401292183}
-    - targetCorrespondingSourceObject: {fileID: 94793665517284721, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 813114739}
+    - targetCorrespondingSourceObject: {fileID: 3190852972148255449, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1517239170}
-    - targetCorrespondingSourceObject: {fileID: 4223362569251574163, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 1915543728}
+    - targetCorrespondingSourceObject: {fileID: 4158935137615369786, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 120282266}
-    - targetCorrespondingSourceObject: {fileID: 2700249616040766486, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 498595987}
+    - targetCorrespondingSourceObject: {fileID: 3431808732843993743, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 880011812}
-    - targetCorrespondingSourceObject: {fileID: 4243386679085870496, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 83979990}
+    - targetCorrespondingSourceObject: {fileID: 385097659531425667, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1275637021}
-    - targetCorrespondingSourceObject: {fileID: 7808802677192127165, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+      addedObject: {fileID: 403391063}
+    - targetCorrespondingSourceObject: {fileID: 3074009891604397870, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 850261651}
-    - targetCorrespondingSourceObject: {fileID: 1898475932478405150, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 334763003}
-    - targetCorrespondingSourceObject: {fileID: 1059450891694987293, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 464287205}
-    - targetCorrespondingSourceObject: {fileID: 494730056264043745, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 288222941}
-    - targetCorrespondingSourceObject: {fileID: 5140973604794713972, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 666945305}
-    - targetCorrespondingSourceObject: {fileID: 3063145789410089175, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2063484382}
-    - targetCorrespondingSourceObject: {fileID: 7912770972153543571, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1910471327}
-    - targetCorrespondingSourceObject: {fileID: 1838059411842461427, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1600992986}
-    - targetCorrespondingSourceObject: {fileID: 6168959551693264187, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2064965366}
-    - targetCorrespondingSourceObject: {fileID: 4177979998524261737, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 61936481}
-    - targetCorrespondingSourceObject: {fileID: 2531233123229607664, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 344408947}
-    - targetCorrespondingSourceObject: {fileID: 1862095232245655070, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1955207924}
-    - targetCorrespondingSourceObject: {fileID: 8780280098832844456, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 203327585}
-    - targetCorrespondingSourceObject: {fileID: 6165876394581352364, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1148877681}
-    - targetCorrespondingSourceObject: {fileID: 4348142405913578080, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 45898284}
+      addedObject: {fileID: 931864561}
   m_SourcePrefab: {fileID: 100100000, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
---- !u!1 &2480691292029462603 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4348142405913578080, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462604 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6165876394581352364, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462605 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8780280098832844456, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462606 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1862095232245655070, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462607 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2531233123229607664, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462608 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4177979998524261737, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462609 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6168959551693264187, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462610 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1838059411842461427, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462611 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7912770972153543571, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462612 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3063145789410089175, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462613 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5140973604794713972, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462614 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 494730056264043745, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462615 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1059450891694987293, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462616 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1898475932478405150, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462617 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7808802677192127165, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462618 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4243386679085870496, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462619 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2700249616040766486, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462620 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4223362569251574163, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462621 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 94793665517284721, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462622 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1659811690703414850, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462623 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6618730130248390206, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462624 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4166119735936053153, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462625 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2757009123817317054, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462626 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2267503645681715261, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462627 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6558977508135259093, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462628 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4952684601026459352, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462629 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4203508257577854548, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2480691292029462630 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 916781748447883421, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
-  m_PrefabInstance: {fileID: 2480691292029462602}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2480691292029462631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
---- !u!114 &2480691292029462632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
---- !u!114 &2480691292029462633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
---- !u!114 &2480691292029462634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
---- !u!114 &2480691292029462635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2480691292029462630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a5ba7101d9f7b42bd5fc751c0e392a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakableProp
-  carTag: PlayerCar
-  minImpactSpeed: 3
-  debrisPrefabs:
-  - {fileID: 3624858672663121645, guid: 9d48133e58151d54b98da5a68056c79c, type: 3}
-  - {fileID: 8759734733548739657, guid: fe4a1c8792dfb6b4098bc2161647b2ed, type: 3}
-  - {fileID: 2100849364329522033, guid: be42baf2b0875504a8910f1d84ae62a0, type: 3}
-  - {fileID: 1887307753860129122, guid: 270b03e8a98e73a46ac46fbcc4563f14, type: 3}
-  debrisCount: 3
-  explosionForce: 400
-  explosionUpward: 1.5
-  explosionRadius: 2
-  debrisLifetime: 4
-  breakParticlePrefab: {fileID: 0}
-  breakSound: {fileID: 0}
 --- !u!114 &2495770118679373498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24073,7 +23333,7 @@ Rigidbody:
   serializedVersion: 5
   m_Mass: 500
   m_LinearDamping: 0.05
-  m_AngularDamping: 0.05
+  m_AngularDamping: 3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -24083,7 +23343,7 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
+  m_ImplicitCom: 0
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -24099,7 +23359,7 @@ Transform:
   m_GameObject: {fileID: 5550776015737534617}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.083, z: 0}
+  m_LocalPosition: {x: -0.605, y: 0.08, z: -0.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26013,11 +25273,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &6482148306210668937 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4800959366724478379, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-  m_PrefabInstance: {fileID: 6798375420161259322}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6500010252121890147
 GameObject:
   m_ObjectHideFlags: 0
@@ -26131,28 +25386,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6567443048272329473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6482148306210668937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b32e660be3990604d94a94c04c935a6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BottleGrabbable
-  bottleAnchor: {fileID: 960709304}
-  anchorPositionOffset: {x: 0.2, y: 0.05, z: 0.1}
-  anchorRotationOffset: {x: 0, y: 0, z: 0}
-  grabRange: 0.15
-  throwThreshold: 1.5
-  drinkRange: 0.25
-  drinkDuration: 1.5
-  drunkEffect: {fileID: 5550776015737534618}
-  showHighlight: 1
-  highlightMaterial: {fileID: 2100000, guid: fb2ab18a8d946034fa188ace09bfe055, type: 2}
 --- !u!4 &6577570601965135836
 Transform:
   m_ObjectHideFlags: 0
@@ -26293,6 +25526,8 @@ GameObject:
   - component: {fileID: 3967012089046090176}
   - component: {fileID: 1900806829997851805}
   - component: {fileID: 3789230296944975839}
+  - component: {fileID: 9023549514490447332}
+  - component: {fileID: 9023549514490447331}
   m_Layer: 0
   m_Name: Sedan1
   m_TagString: PlayerCar
@@ -26395,69 +25630,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 960709304}
     m_Modifications:
-    - target: {fileID: 406425402610672122, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_ImplicitCom
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 406425402610672122, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 406425402610672122, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 406425402610672122, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_ImplicitTensor
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 406425402610672122, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377148338286247403, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_Height
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377148338286247403, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_Radius
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377148338286247403, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_Center.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377148338286247403, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_Center.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377148338286247403, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_Center.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377148338286247403, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_Direction
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377148338286247403, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1377148338286247403, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_ProvidesContacts
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1838190339140479218, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.10000004
-      objectReference: {fileID: 0}
-    - target: {fileID: 1838190339140479218, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.10000004
-      objectReference: {fileID: 0}
     - target: {fileID: 1838190339140479218, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.015996695
+      value: -0.407
       objectReference: {fileID: 0}
     - target: {fileID: 1838190339140479218, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
       propertyPath: m_LocalPosition.y
@@ -26465,7 +25640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1838190339140479218, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.09000009
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: 1838190339140479218, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
       propertyPath: m_LocalRotation.w
@@ -26495,29 +25670,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3253843913287411471, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
+      propertyPath: drunkEffect
+      value: 
+      objectReference: {fileID: 5550776015737534618}
+    - target: {fileID: 3253843913287411471, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
+      propertyPath: bottleAnchor
+      value: 
+      objectReference: {fileID: 960709304}
     - target: {fileID: 4800959366724478379, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
       propertyPath: m_Name
       value: jager
       objectReference: {fileID: 0}
-    - target: {fileID: 7172956127526479944, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: grabRange
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7172956127526479944, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7172956127526479944, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      propertyPath: bottleAnchor
-      value: 
-      objectReference: {fileID: 960709304}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4800959366724478379, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6567443048272329473}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
 --- !u!4 &6808994341962697209
 Transform:
@@ -30264,14 +29432,6 @@ PrefabInstance:
       value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 541979498795007764, guid: 2f98930c075720742a099ba8ea6f8c53, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.019999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 541979498795007764, guid: 2f98930c075720742a099ba8ea6f8c53, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.019999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 541979498795007764, guid: 2f98930c075720742a099ba8ea6f8c53, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -30327,16 +29487,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ControlGuidePanel
       objectReference: {fileID: 0}
-    - target: {fileID: 7842866534603635413, guid: 2f98930c075720742a099ba8ea6f8c53, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 541979498795007764, guid: 2f98930c075720742a099ba8ea6f8c53, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1479437446}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f98930c075720742a099ba8ea6f8c53, type: 3}
 --- !u!224 &8616779266531162025 stripped
@@ -30672,6 +29825,200 @@ Transform:
   - {fileID: 960709304}
   m_Father: {fileID: 1770376145326092039}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &9023549514490447331
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6654573128331120384}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 9dc186c85ed3e3c4e9489b5516b3eb7d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &9023549514490447332
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6654573128331120384}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: ef309cb25a1325e489e73fdcf41cb751, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &9026368969667108466
 Transform:
   m_ObjectHideFlags: 0

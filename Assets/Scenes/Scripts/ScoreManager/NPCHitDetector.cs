@@ -1,10 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-/// <summary>
-/// Attach to every NPC prefab.
-/// Calls ScoreManager.RegisterNPCHit() — counts toward combo multiplier.
-/// </summary>
 [RequireComponent(typeof(Collider))]
 public class NPCHitDetector : MonoBehaviour
 {
@@ -12,6 +8,12 @@ public class NPCHitDetector : MonoBehaviour
     public string carTag = "PlayerCar";
     public float minImpactSpeed = 3f;
     public float destroyDelay = 2f;
+
+    [Header("Sounds")]
+    [Tooltip("Drag in 2-3 different scream clips for variety")]
+    public AudioClip[] screamClips;
+    [Tooltip("Body/thud impact sound")]
+    public AudioClip impactClip;
 
     private bool hasBeenHit = false;
 
@@ -22,6 +24,16 @@ public class NPCHitDetector : MonoBehaviour
         if (collision.relativeVelocity.magnitude < minImpactSpeed) return;
 
         hasBeenHit = true;
+
+        // Play a random scream at the NPC's world position
+        if (screamClips != null && screamClips.Length > 0)
+        {
+            AudioClip scream = screamClips[Random.Range(0, screamClips.Length)];
+            AudioSource.PlayClipAtPoint(scream, transform.position, 2f);
+        }
+
+        if (impactClip != null)
+            AudioSource.PlayClipAtPoint(impactClip, collision.contacts[0].point, 0.8f);
 
         if (ScoreManager.Instance != null)
             ScoreManager.Instance.RegisterNPCHit();

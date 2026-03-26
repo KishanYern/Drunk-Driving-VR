@@ -212,3 +212,9 @@ MonoBehaviour:
   carTag: PlayerCar
   minImpactSpeed: 3
   destroyDelay: 2
+  screamClips:
+  - {fileID: 8300000, guid: be68011664e8df143be39450b3e37701, type: 3}
+  - {fileID: 8300000, guid: e2e8114a1a16102469692039e7aa8d12, type: 3}
+  - {fileID: 8300000, guid: d7d3896017aab9e49bf2a3ffc20faab6, type: 3}
+  - {fileID: 8300000, guid: eb7ca0d8308ef494f8cff3cd64dfd7fc, type: 3}
+  impactClip: {fileID: 0}
