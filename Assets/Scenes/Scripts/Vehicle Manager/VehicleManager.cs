@@ -1,116 +1,94 @@
 using UnityEngine;
 
 /// <summary>
-/// Enhanced VehicleManager for VR car enter/exit functionality.
-/// Attach this to your Car's root GameObject.
+/// VehicleManager - Always-in-car version.
+/// Player spawns directly in the driver's seat at game start.
+/// No exit functionality — player is always driving.
+/// Attach this to your Car's root GameObject (Sedan1).
 /// </summary>
 public class VehicleManager : MonoBehaviour
 {
     [Header("References")]
-    [Tooltip("Your OVRPlayerController or XR Rig")]
+    [Tooltip("Your OculusInteractionSampleRig GameObject")]
     public GameObject playerRig;
 
-    [Tooltip("Your car controller script")]
+    [Tooltip("Your CarController2_VR script on the car")]
     public CarController2_VR carController;
 
-    [Tooltip("Empty GameObject at driver's head/seat position")]
+    [Tooltip("The 'Anchor Car' Transform — the driver's seat position/rotation")]
     public Transform seatAnchor;
 
-    [Header("Exit Settings")]
-    [Tooltip("Distance to move player when exiting (to the side)")]
-    public float exitDistance = 1.5f;
-
-    [Tooltip("Exit on the right side of the car (uncheck for left)")]
-    public bool exitOnRightSide = true;
-
-    [Header("Optional - Disable Player Movement")]
-    [Tooltip("Reference to OVRPlayerController if you want to disable movement while driving")]
-    public MonoBehaviour ovrPlayerController;
-
+    // Tracks whether the player has been seated (used as a safety guard)
     private bool inCar = false;
-    private Vector3 originalPlayerPosition;
-    private Quaternion originalPlayerRotation;
-    private Transform originalPlayerParent;
 
     void Start()
     {
-        if (carController != null)
-            carController.enabled = false;
-
         if (playerRig == null)
-            Debug.LogError("PlayerRig not assigned to VehicleManager!");
+        {
+            Debug.LogError("VehicleManager: PlayerRig not assigned!");
+            return;
+        }
 
         if (seatAnchor == null)
         {
-            Debug.LogWarning("SeatAnchor not assigned. Creating one at car's position.");
+            Debug.LogWarning("VehicleManager: SeatAnchor not assigned — creating a default one.");
             seatAnchor = new GameObject("SeatAnchor").transform;
             seatAnchor.SetParent(transform);
-            seatAnchor.localPosition = new Vector3(0, 1.5f, 0);
+            seatAnchor.localPosition = new Vector3(-0.4f, 1.5f, 0f); // Approximate driver position
         }
-    }
 
-    /// <summary>Toggle between entering and exiting the car.</summary>
-    public void ToggleVehicle()
-    {
-        if (!inCar) EnterCar();
-        else ExitCar();
-    }
-
-    public void EnterCar()
-    {
-        if (inCar || playerRig == null) return;
-
-        Debug.Log("Entering car...");
-        inCar = true;
-
-        originalPlayerPosition = playerRig.transform.position;
-        originalPlayerRotation = playerRig.transform.rotation;
-        originalPlayerParent = playerRig.transform.parent;
-
-        playerRig.transform.SetParent(transform);
-        playerRig.transform.position = seatAnchor.position;
-        playerRig.transform.rotation = seatAnchor.rotation;
-
-        CharacterController cc = playerRig.GetComponent<CharacterController>();
-        if (cc != null) cc.enabled = false;
-
-        if (ovrPlayerController != null) ovrPlayerController.enabled = false;
-        if (carController != null) carController.enabled = true;
-    }
-
-    public void ExitCar()
-    {
-        if (!inCar || playerRig == null) return;
-
-        Debug.Log("Exiting car...");
-        inCar = false;
-
-        playerRig.transform.SetParent(originalPlayerParent);
-
-        Vector3 exitDir = exitOnRightSide ? transform.right : -transform.right;
-        playerRig.transform.position = transform.position + exitDir * exitDistance;
-
-        CharacterController cc = playerRig.GetComponent<CharacterController>();
-        if (cc != null) cc.enabled = true;
-
-        if (ovrPlayerController != null) ovrPlayerController.enabled = true;
-        if (carController != null) carController.enabled = false;
-    }
-
-    public bool IsInCar() => inCar;
-
-    void OnDestroy()
-    {
-        if (inCar) ExitCar();
+        // Seat the player immediately on game start
+        EnterCar();
     }
 
     /// <summary>
-    /// Called every frame by SteeringWheelInteraction_OVR.
-    /// Passes the normalised steering value (-1..1) straight to the car.
+    /// Parents the player rig to the car and positions them at the seat anchor.
+    /// Called automatically in Start().
+    /// </summary>
+    private void EnterCar()
+    {
+        if (inCar) return;
+        inCar = true;
+
+        playerRig.transform.SetParent(transform);
+        playerRig.transform.rotation = seatAnchor.rotation;
+
+        // Correct for VR head offset so eyes land at the Anchor, not the rig root
+        OVRCameraRig ovrRig = playerRig.GetComponentInChildren<OVRCameraRig>();
+        if (ovrRig != null && ovrRig.centerEyeAnchor != null)
+        {
+            Vector3 eyeOffset = ovrRig.centerEyeAnchor.position - playerRig.transform.position;
+            playerRig.transform.position = seatAnchor.position - eyeOffset;
+        }
+        else
+        {
+            playerRig.transform.position = seatAnchor.position;
+        }
+
+        CharacterController cc = playerRig.GetComponentInChildren<CharacterController>();
+        if (cc != null) cc.enabled = false;
+
+        if (carController != null) carController.enabled = true;
+
+        Debug.Log("VehicleManager: Player seated at Driver Anchor.");
+    }
+
+    /// <summary>
+    /// Returns whether the player is currently seated.
+    /// </summary>
+    public bool IsInCar()
+    {
+        return inCar;
+    }
+
+    /// <summary>
+    /// Called by SteeringWheelInteraction_OVR to pass steering input to the car.
     /// </summary>
     public void SetSteering(float value)
     {
-        if (!inCar || carController == null) return;
-        carController.SetExternalSteering(value);
+        if (inCar && carController != null)
+        {
+            carController.SetExternalSteering(value);
+        }
     }
 }
