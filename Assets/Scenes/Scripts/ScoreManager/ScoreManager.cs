@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 /// <summary>
-/// Singleton score manager.
-/// - Base points per hit scale with the current multiplier.
-/// - Multiplier increases every consecutive hit within comboTimeWindow seconds.
-/// - If the window expires with no new hit, multiplier resets to 1.
+/// Three hit types:
+///   RegisterNPCHit()   — scores base points x multiplier, grows the multiplier chain
+///   RegisterPropHit()  — flat +10 pts, no multiplier change
+///   RegisterWallHit()  — -50 pts, immediately kills the multiplier chain
 /// </summary>
 public class ScoreManager : MonoBehaviour
 {
@@ -15,30 +14,21 @@ public class ScoreManager : MonoBehaviour
     // ------------------------------------------------------------------ //
     // Inspector
     // ------------------------------------------------------------------ //
-    [Header("Scoring")]
-    [Tooltip("Base points awarded per NPC hit (multiplied by current multiplier).")]
+    [Header("Scoring — NPC")]
     public int basePointsPerHit = 100;
-
-    [Tooltip("Seconds you have to hit another NPC before the combo resets.")]
     public float comboTimeWindow = 3f;
-
-    [Tooltip("How much the multiplier increases with each consecutive hit.")]
     public int multiplierStep = 1;
-
-    [Tooltip("Maximum multiplier cap.")]
     public int maxMultiplier = 10;
 
+    [Header("Scoring — Props and Walls")]
+    public int propHitPoints = 10;
+    public int wallHitPenalty = 50;   // subtracted from score
+
     [Header("UI")]
-    [Tooltip("Text element showing the total score.")]
     public TMP_Text scoreText;
-
-    [Tooltip("Text element showing the current multiplier.")]
     public TMP_Text multiplierText;
-
-    [Tooltip("Text element showing the combo timer countdown (optional).")]
     public TMP_Text timerText;
-
-    [Tooltip("Panel/object to flash or animate on combo increase (optional).")]
+    public TMP_Text feedbackText;         // shows "+10", "-50 WALL!" etc. briefly
     public GameObject comboFeedbackObject;
 
     // ------------------------------------------------------------------ //
@@ -46,9 +36,9 @@ public class ScoreManager : MonoBehaviour
     // ------------------------------------------------------------------ //
     private int totalScore = 0;
     private int currentMultiplier = 1;
-    private float comboTimer = 0f;          // counts DOWN from comboTimeWindow
-    private bool comboActive = false;       // true after first hit in a chain
-    private int consecutiveHits = 0;       // hits without the timer expiring
+    private float comboTimer = 0f;
+    private bool comboActive = false;
+    private int consecutiveHits = 0;
 
     // ------------------------------------------------------------------ //
 
@@ -64,47 +54,74 @@ public class ScoreManager : MonoBehaviour
 
         comboTimer -= Time.deltaTime;
 
-        // Update optional countdown UI
         if (timerText != null)
             timerText.text = Mathf.Max(comboTimer, 0f).ToString("F1") + "s";
 
-        // Timer expired — reset combo
         if (comboTimer <= 0f)
-            ResetCombo();
+            ResetCombo(silent: true);
     }
 
-    /// <summary>
-    /// Call this whenever the player's car hits an NPC.
-    /// </summary>
-    public void RegisterHit()
+    // ------------------------------------------------------------------ //
+    // Public hit entry points
+    // ------------------------------------------------------------------ //
+
+    /// <summary>Hit an NPC — grows combo and scores multiplied points.</summary>
+    public void RegisterNPCHit()
     {
         consecutiveHits++;
-
-        // Increase multiplier every hit, capped at maxMultiplier
         currentMultiplier = Mathf.Min(1 + (consecutiveHits - 1) * multiplierStep, maxMultiplier);
 
-        // Award points
-        int pointsAwarded = basePointsPerHit * currentMultiplier;
-        totalScore += pointsAwarded;
+        int pts = basePointsPerHit * currentMultiplier;
+        AddScore(pts);
 
-        // Restart the combo window
         comboTimer = comboTimeWindow;
         comboActive = true;
 
-        Debug.Log($"[Score] Hit! +{pointsAwarded} pts | x{currentMultiplier} multiplier | Total: {totalScore}");
+        ShowFeedback($"+{pts}" + (currentMultiplier > 1 ? $"  x{currentMultiplier}!" : ""), Color.yellow);
+        TriggerComboFeedback();
+        Debug.Log($"[Score] NPC Hit! +{pts} | x{currentMultiplier} | Total: {totalScore}");
 
         UpdateUI();
-        TriggerComboFeedback();
     }
 
-    private void ResetCombo()
+    /// <summary>Hit a prop (light post, traffic light, etc.) — flat points, no multiplier effect.</summary>
+    public void RegisterPropHit()
+    {
+        AddScore(propHitPoints);
+        ShowFeedback($"+{propHitPoints}", Color.white);
+        Debug.Log($"[Score] Prop Hit! +{propHitPoints} | Total: {totalScore}");
+        UpdateUI();
+    }
+
+    /// <summary>Hit a wall or building — penalty and combo reset.</summary>
+    public void RegisterWallHit()
+    {
+        AddScore(-wallHitPenalty);
+        ResetCombo(silent: false);
+        ShowFeedback($"-{wallHitPenalty}  WALL!", Color.red);
+        Debug.Log($"[Score] Wall Hit! -{wallHitPenalty} | Total: {totalScore}");
+        UpdateUI();
+    }
+
+    // ------------------------------------------------------------------ //
+    // Internal helpers
+    // ------------------------------------------------------------------ //
+
+    private void AddScore(int amount)
+    {
+        totalScore = Mathf.Max(0, totalScore + amount);   // clamp at 0, no negative totals
+    }
+
+    private void ResetCombo(bool silent)
     {
         consecutiveHits = 0;
         currentMultiplier = 1;
         comboActive = false;
         comboTimer = 0f;
 
-        Debug.Log("[Score] Combo expired — multiplier reset.");
+        if (!silent)
+            Debug.Log("[Score] Combo broken!");
+
         UpdateUI();
     }
 
@@ -114,26 +131,34 @@ public class ScoreManager : MonoBehaviour
             scoreText.text = "Score: " + totalScore.ToString("N0");
 
         if (multiplierText != null)
-        {
-            multiplierText.text = currentMultiplier > 1
-                ? "x" + currentMultiplier
-                : "";           // Hide "x1" — looks cleaner
-        }
+            multiplierText.text = currentMultiplier > 1 ? $"x{currentMultiplier}" : "";
 
         if (timerText != null && !comboActive)
             timerText.text = "";
     }
 
+    private void ShowFeedback(string message, Color color)
+    {
+        if (feedbackText == null) return;
+        feedbackText.text = message;
+        feedbackText.color = color;
+        CancelInvoke(nameof(ClearFeedback));
+        Invoke(nameof(ClearFeedback), 1.2f);
+    }
+
+    private void ClearFeedback()
+    {
+        if (feedbackText != null) feedbackText.text = "";
+    }
+
     private void TriggerComboFeedback()
     {
         if (comboFeedbackObject == null) return;
-        // Simple pulse: disable and re-enable so you can drive an Animator trigger
         comboFeedbackObject.SetActive(false);
         comboFeedbackObject.SetActive(true);
     }
 
-    // Public read-only accessors for other scripts if needed
-    public int Score        => totalScore;
-    public int Multiplier   => currentMultiplier;
+    public int Score => totalScore;
+    public int Multiplier => currentMultiplier;
     public float ComboTimer => comboTimer;
 }
