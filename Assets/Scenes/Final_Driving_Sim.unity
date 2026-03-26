@@ -5273,6 +5273,11 @@ MonoBehaviour:
   debrisLifetime: 4
   breakParticlePrefab: {fileID: 0}
   breakSound: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
+--- !u!1 &1271033407 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6013580640707119878, guid: a0f13270ac0a04a4b82f78a322bc5610, type: 3}
+  m_PrefabInstance: {fileID: 2480691292029462602}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1284593138
 GameObject:
   m_ObjectHideFlags: 0
@@ -20422,6 +20427,71 @@ SkinnedMeshRenderer:
     m_Center: {x: 3.5085697, y: 0.084750324, z: -0.17565808}
     m_Extent: {x: 0.10651207, y: 0.1877416, z: 0.45612457}
   m_DirtyAABB: 0
+--- !u!1001 &3646133167005063315
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1529161184394262026, guid: a0bb058220e54f94e9d7f2773390195b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -32.87478
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529161184394262026, guid: a0bb058220e54f94e9d7f2773390195b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.05866
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529161184394262026, guid: a0bb058220e54f94e9d7f2773390195b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -57.03941
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529161184394262026, guid: a0bb058220e54f94e9d7f2773390195b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529161184394262026, guid: a0bb058220e54f94e9d7f2773390195b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529161184394262026, guid: a0bb058220e54f94e9d7f2773390195b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529161184394262026, guid: a0bb058220e54f94e9d7f2773390195b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529161184394262026, guid: a0bb058220e54f94e9d7f2773390195b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529161184394262026, guid: a0bb058220e54f94e9d7f2773390195b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1529161184394262026, guid: a0bb058220e54f94e9d7f2773390195b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803820483231392681, guid: a0bb058220e54f94e9d7f2773390195b, type: 3}
+      propertyPath: m_Name
+      value: CityTileManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981930870829215820, guid: a0bb058220e54f94e9d7f2773390195b, type: 3}
+      propertyPath: car
+      value: 
+      objectReference: {fileID: 9023549514490447330}
+    - target: {fileID: 7981930870829215820, guid: a0bb058220e54f94e9d7f2773390195b, type: 3}
+      propertyPath: cityPrefab
+      value: 
+      objectReference: {fileID: 1271033407}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a0bb058220e54f94e9d7f2773390195b, type: 3}
 --- !u!1 &3669136493850268024
 GameObject:
   m_ObjectHideFlags: 0
@@ -30268,3 +30338,4 @@ SceneRoots:
   - {fileID: 213845914}
   - {fileID: 871236512}
   - {fileID: 910022121}
+  - {fileID: 3646133167005063315}
