@@ -24,6 +24,9 @@ public class SimpleNPCMovement : MonoBehaviour
 
     void Update()
     {
+        // Prevent errors if the NPC spawns before the NavMesh is ready or spawns out of bounds
+        if (!agent.isOnNavMesh) return;
+
         // If the agent is calculating a path or still moving toward its goal, keep waiting.
         if (agent.pathPending || agent.remainingDistance > 0.5f)
         {

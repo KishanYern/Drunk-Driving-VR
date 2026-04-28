@@ -74,13 +74,47 @@ public class BreakableProp : MonoBehaviour
         if (ScoreManager.Instance != null)
             ScoreManager.Instance.RegisterPropHit();
 
-        // --- Hide original mesh + disable collider ---
-        if (propRenderer != null) propRenderer.enabled = false;
-        if (propCollider != null) propCollider.enabled = false;
-
-        // --- Spawn debris ---
         Vector3 impactPoint = collision.contacts[0].point;
-        SpawnDebris(impactPoint, collision.relativeVelocity);
+
+        if (debrisPrefabs != null && debrisPrefabs.Length > 0)
+        {
+            // --- Hide original mesh + disable collider ---
+            if (propRenderer != null) propRenderer.enabled = false;
+            if (propCollider != null) propCollider.enabled = false;
+
+            // --- Spawn debris ---
+            SpawnDebris(impactPoint, collision.relativeVelocity);
+        }
+        else
+        {
+            // --- Make the pole ITSELF fly away (Fallback) ---
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb == null) rb = gameObject.AddComponent<Rigidbody>();
+
+            MeshCollider[] meshColliders = GetComponentsInChildren<MeshCollider>();
+            foreach (MeshCollider mc in meshColliders) mc.convex = true;
+
+            rb.isKinematic = false;
+            rb.useGravity = true;
+            rb.constraints = RigidbodyConstraints.None;
+            
+            // Give the full pole a realistic mass so it doesn't fly like a bullet
+            rb.mass = 150f; 
+            rb.linearDamping = 2f; // Heavy air resistance so it drops quickly
+            rb.angularDamping = 2f; // Stops it from spinning endlessly
+
+            // Clamp the impact speed so super-fast crashes don't launch it miles away
+            Vector3 clampedVelocity = Vector3.ClampMagnitude(collision.relativeVelocity, 15f);
+
+            // Transfer only 10% of the clamped speed, plus a small upward pop
+            Vector3 pushForce = clampedVelocity * rb.mass * 0.10f;
+            pushForce.y += 300f; // Upward pop scaled for the heavier 150kg mass
+
+            rb.AddForce(pushForce, ForceMode.Impulse);
+            
+            // Add a smaller tumble since it's much heavier
+            rb.AddTorque(Random.insideUnitSphere * 50f, ForceMode.Impulse);
+        }
 
         // --- Effects ---
         if (breakParticlePrefab != null)
@@ -92,7 +126,7 @@ public class BreakableProp : MonoBehaviour
         if (breakSound != null)
             AudioSource.PlayClipAtPoint(breakSound, impactPoint);
 
-        // --- Destroy the now-invisible parent after debris has settled ---
+        // --- Destroy the object after some time to keep the scene clean ---
         Destroy(gameObject, debrisLifetime + 0.5f);
     }
 
@@ -118,6 +152,13 @@ public class BreakableProp : MonoBehaviour
             Quaternion randomRot = Random.rotation;
 
             GameObject piece = Instantiate(prefab, spawnPos, randomRot);
+
+            // Ensure any MeshColliders on the debris are convex (required for dynamic rigidbodies)
+            MeshCollider[] meshColliders = piece.GetComponentsInChildren<MeshCollider>();
+            foreach (MeshCollider mc in meshColliders)
+            {
+                mc.convex = true;
+            }
 
             // Make sure the piece has a Rigidbody for physics
             Rigidbody rb = piece.GetComponent<Rigidbody>();

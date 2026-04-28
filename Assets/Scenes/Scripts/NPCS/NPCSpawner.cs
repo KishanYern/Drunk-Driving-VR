@@ -26,15 +26,58 @@ public class NPCSpawner : MonoBehaviour
     [Tooltip("Offset added to the Y position so the NPC doesn't spawn halfway in the floor (e.g., 1 for a default Unity Capsule).")]
     public float yOffset = 1f;
 
+    [Header("Infinite Map Settings")]
+    [Tooltip("If true, NPCs that fall far behind the spawn center will be continuously respawned near it.")]
+    public bool keepInRadius = true;
+    [Tooltip("How far an NPC can be from the spawn center before being respawned.")]
+    public float maxDistance = 150f;
+
     private List<GameObject> spawnedNPCs = new List<GameObject>();
 
     void Start()
     {
-        if (spawnCenter == null) 
+        if (spawnCenter == null || spawnCenter == this.transform) 
         {
-            spawnCenter = this.transform;
+            // Attempt to automatically find the car so the spawner follows it
+            GameObject playerCar = GameObject.FindGameObjectWithTag("PlayerCar");
+            if (playerCar != null)
+            {
+                spawnCenter = playerCar.transform;
+            }
+            else
+            {
+                spawnCenter = this.transform;
+            }
         }
         SpawnNPCs();
+    }
+
+    void Update()
+    {
+        if (!keepInRadius || spawnCenter == null) return;
+
+        // Loop backwards because we remove items from the list
+        for (int i = spawnedNPCs.Count - 1; i >= 0; i--)
+        {
+            GameObject npc = spawnedNPCs[i];
+            
+            // Replace dead/missing NPCs
+            if (npc == null) 
+            {
+                spawnedNPCs.RemoveAt(i);
+                SpawnSingleNPC(); 
+                continue;
+            }
+
+            // Check distance
+            float dist = Vector3.Distance(npc.transform.position, spawnCenter.position);
+            if (dist > maxDistance)
+            {
+                Destroy(npc);
+                spawnedNPCs.RemoveAt(i);
+                SpawnSingleNPC();
+            }
+        }
     }
 
     public void SpawnNPCs()

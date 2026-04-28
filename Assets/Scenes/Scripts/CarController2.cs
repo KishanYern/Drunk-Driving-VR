@@ -191,40 +191,56 @@ public class CarController2_VR : MonoBehaviour
         localVelocityX = transform.InverseTransformDirection(carRigidbody.linearVelocity).x;
         localVelocityZ = transform.InverseTransformDirection(carRigidbody.linearVelocity).z;
 
-        HandleVRInput();
+        HandleInput();
         AnimateWheelMeshes();
     }
 
-    void HandleVRInput()
+    void HandleInput()
     {
         float rightTrigger = 0f;
         float leftTrigger = 0f;
+        float keyboardSteering = 0f;
+        float keyboardThrottle = 0f;
 
-        // --- ACCELERATION (right trigger) ---
-        if (rightController.TryGetFeatureValue(CommonUsages.trigger, out rightTrigger)
-            && rightTrigger > triggerThreshold)
+        if (UnityEngine.InputSystem.Keyboard.current != null)
+        {
+            if (UnityEngine.InputSystem.Keyboard.current.wKey.isPressed || UnityEngine.InputSystem.Keyboard.current.upArrowKey.isPressed) keyboardThrottle = 1f;
+            else if (UnityEngine.InputSystem.Keyboard.current.sKey.isPressed || UnityEngine.InputSystem.Keyboard.current.downArrowKey.isPressed) keyboardThrottle = -1f;
+
+            if (UnityEngine.InputSystem.Keyboard.current.dKey.isPressed || UnityEngine.InputSystem.Keyboard.current.rightArrowKey.isPressed) keyboardSteering = 1f;
+            else if (UnityEngine.InputSystem.Keyboard.current.aKey.isPressed || UnityEngine.InputSystem.Keyboard.current.leftArrowKey.isPressed) keyboardSteering = -1f;
+        }
+
+        // --- ACCELERATION (right trigger or W/Up) ---
+        if ((rightController.TryGetFeatureValue(CommonUsages.trigger, out rightTrigger)
+            && rightTrigger > triggerThreshold) || keyboardThrottle > 0.1f)
         {
             CancelInvoke("DecelerateCar");
             deceleratingCar = false;
             GoForward();
         }
 
-        // --- BRAKE / REVERSE (left trigger) ---
-        if (leftController.TryGetFeatureValue(CommonUsages.trigger, out leftTrigger)
-            && leftTrigger > triggerThreshold)
+        // --- BRAKE / REVERSE (left trigger or S/Down) ---
+        else if ((leftController.TryGetFeatureValue(CommonUsages.trigger, out leftTrigger)
+            && leftTrigger > triggerThreshold) || keyboardThrottle < -0.1f)
         {
             CancelInvoke("DecelerateCar");
             deceleratingCar = false;
             GoReverse();
         }
 
-        // --- STEERING — always driven by the physical steering wheel ---
-        // externalSteeringInput is updated every frame by SteeringWheelInteraction_OVR
-        // (including while self-centring after release), so we just apply it directly.
-        ApplyExternalSteering(externalSteeringInput);
+        // --- STEERING ---
+        if (Mathf.Abs(keyboardSteering) > 0.05f)
+        {
+            ApplyExternalSteering(keyboardSteering);
+        }
+        else
+        {
+            ApplyExternalSteering(externalSteeringInput);
+        }
 
-        // --- DECELERATION when both triggers released ---
-        if (rightTrigger <= triggerThreshold && leftTrigger <= triggerThreshold)
+        // --- DECELERATION when no input ---
+        if (rightTrigger <= triggerThreshold && leftTrigger <= triggerThreshold && Mathf.Abs(keyboardThrottle) <= 0.1f)
         {
             ThrottleOff();
             if (!deceleratingCar)
