@@ -1168,6 +1168,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 51
   yOffset: 1
+  keepInRadius: 1
+  maxDistance: 150
 --- !u!4 &213845914
 Transform:
   m_ObjectHideFlags: 0
@@ -3443,13 +3445,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871236510}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.09984935, y: 0.79214686, z: -0.2612998, w: 0.54245365}
   m_LocalPosition: {x: -34.45115, y: 2.7179, z: -65.66017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 17.797, y: 106.783, z: -27.637}
 --- !u!1001 &886154455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23448,7 +23450,6 @@ GameObject:
   - component: {fileID: 5550776015737534616}
   - component: {fileID: 314904285}
   - component: {fileID: 314904284}
-  - component: {fileID: 5550776015737534618}
   m_Layer: 0
   m_Name: OculusInteractionSampleRig
   m_TagString: Player
@@ -23456,23 +23457,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5550776015737534618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5550776015737534617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd0dff3308dfcc340a3083e858fc50f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DrunkEffect
-  impairmentPerSip: 0.15
-  maxImpairment: 1
-  sobringUpRate: 0.01
-  maxWobbleAngle: 8
-  wobbleSpeed: 1.2
 --- !u!4 &5555418173796797653
 Transform:
   m_ObjectHideFlags: 0
@@ -25743,7 +25727,7 @@ PrefabInstance:
     - target: {fileID: 3253843913287411471, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
       propertyPath: drunkEffect
       value: 
-      objectReference: {fileID: 5550776015737534618}
+      objectReference: {fileID: 0}
     - target: {fileID: 3253843913287411471, guid: 6aa1cf1e1a84d55449e46251698cfa66, type: 3}
       propertyPath: bottleAnchor
       value: 
@@ -26923,6 +26907,7 @@ GameObject:
   - component: {fileID: 7192818547991983946}
   - component: {fileID: 2118090397}
   - component: {fileID: 2118090401}
+  - component: {fileID: 7192818547993491601}
   m_Layer: 0
   m_Name: CenterEyeAnchor
   m_TagString: MainCamera
@@ -27033,6 +27018,26 @@ Transform:
   - {fileID: 1860802107}
   m_Father: {fileID: 7192818547993551316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7192818547993491601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7192818547993191600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0dff3308dfcc340a3083e858fc50f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DrunkEffect
+  impairmentPerSip: 0.15
+  maxImpairment: 1
+  sobringUpRate: 0.01
+  maxWobbleAngle: 8
+  wobbleSpeed: 1.2
+  doubleVisionMaterial: {fileID: 2100000, guid: 7ab2b0901dba994458ec4cbca5ffef74, type: 2}
+  maxDoubleVisionOffset: 0.02
+  drinkKey: 16
 --- !u!4 &7192818547993491602
 Transform:
   m_ObjectHideFlags: 0

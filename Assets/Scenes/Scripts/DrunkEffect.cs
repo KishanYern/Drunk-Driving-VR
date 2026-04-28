@@ -22,6 +22,16 @@ public class DrunkEffect : MonoBehaviour
     [Tooltip("Speed of the wobble oscillation")]
     public float wobbleSpeed = 1.2f;
 
+    [Header("Double Vision Settings")]
+    [Tooltip("The URP Material used for the Double Vision effect")]
+    public Material doubleVisionMaterial;
+    [Tooltip("The maximum horizontal offset for the double vision when fully impaired")]
+    public float maxDoubleVisionOffset = 0.02f;
+
+    [Header("Input Settings")]
+    [Tooltip("Keyboard key to press to take a sip and increase drunkenness")]
+    public UnityEngine.InputSystem.Key drinkKey = UnityEngine.InputSystem.Key.B;
+
     private float impairmentLevel = 0f;
     private Transform cameraTransform;
     private Quaternion originalLocalRotation;
@@ -35,6 +45,11 @@ public class DrunkEffect : MonoBehaviour
         if (rig != null)
         {
             cameraTransform = rig.centerEyeAnchor;
+        }
+        else if (GetComponent<Camera>() != null)
+        {
+            // If attached directly to the camera
+            cameraTransform = transform;
         }
         else
         {
@@ -50,10 +65,23 @@ public class DrunkEffect : MonoBehaviour
             originalLocalRotation = cameraTransform.localRotation;
 
         wobbleTimeOffset = Random.Range(0f, 100f);
+        
+        // Ensure double vision starts at 0
+        if (doubleVisionMaterial != null)
+        {
+            doubleVisionMaterial.SetVector("_Offset", Vector4.zero);
+        }
     }
 
     void Update()
     {
+        // Simple keyboard button to take a sip (using the new Input System)
+        if (UnityEngine.InputSystem.Keyboard.current != null && 
+            UnityEngine.InputSystem.Keyboard.current[drinkKey].wasPressedThisFrame)
+        {
+            AddSip();
+        }
+
         if (cameraTransform == null)
             return;
 
@@ -61,11 +89,19 @@ public class DrunkEffect : MonoBehaviour
         {
             // Ensure camera rotation is restored when completely sober
             cameraTransform.localRotation = originalLocalRotation;
+            if (doubleVisionMaterial != null) doubleVisionMaterial.SetVector("_Offset", Vector4.zero);
             return;
         }
 
         // Slowly sober up over time
         impairmentLevel = Mathf.Max(0f, impairmentLevel - sobringUpRate * Time.deltaTime);
+
+        if (doubleVisionMaterial != null)
+        {
+            // Update double vision based on impairment level
+            float currentOffset = maxDoubleVisionOffset * impairmentLevel;
+            doubleVisionMaterial.SetVector("_Offset", new Vector4(currentOffset, 0f, 0f, 0f));
+        }
 
         if (impairmentLevel <= 0f)
         {
@@ -105,5 +141,19 @@ public class DrunkEffect : MonoBehaviour
         // Restore camera rotation when script is disabled
         if (cameraTransform != null)
             cameraTransform.localRotation = originalLocalRotation;
+            
+        // Reset double vision
+        if (doubleVisionMaterial != null)
+            doubleVisionMaterial.SetVector("_Offset", Vector4.zero);
+    }
+
+    void OnGUI()
+    {
+        // Simple debug UI to show the drunk level on screen
+        GUIStyle style = new GUIStyle();
+        style.fontSize = 40;
+        style.normal.textColor = Color.red;
+        style.fontStyle = FontStyle.Bold;
+        GUI.Label(new Rect(20, 20, 400, 100), "DRUNK LEVEL: " + (impairmentLevel * 100f).ToString("F0") + "%", style);
     }
 }
