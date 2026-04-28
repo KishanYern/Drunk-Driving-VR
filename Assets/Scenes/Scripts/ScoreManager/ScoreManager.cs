@@ -31,6 +31,11 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text feedbackText;         // shows "+10", "-50 WALL!" etc. briefly
     public GameObject comboFeedbackObject;
 
+    [Header("Global Timer")]
+    public float startingTime = 60f;
+    public float timeAddedPerHit = 0.1f;
+    public TMP_Text globalTimerText;
+
     // ------------------------------------------------------------------ //
     // State
     // ------------------------------------------------------------------ //
@@ -39,6 +44,8 @@ public class ScoreManager : MonoBehaviour
     private float comboTimer = 0f;
     private bool comboActive = false;
     private int consecutiveHits = 0;
+    private float currentGlobalTime;
+    private bool isGameOver = false;
 
     // ------------------------------------------------------------------ //
 
@@ -46,10 +53,25 @@ public class ScoreManager : MonoBehaviour
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
+        currentGlobalTime = startingTime;
     }
 
     void Update()
     {
+        if (!isGameOver)
+        {
+            currentGlobalTime -= Time.deltaTime;
+            if (currentGlobalTime <= 0f)
+            {
+                currentGlobalTime = 0f;
+                isGameOver = true;
+                Debug.Log("[ScoreManager] Time's up! Game Over.");
+            }
+
+            if (globalTimerText != null)
+                globalTimerText.text = "Time: " + currentGlobalTime.ToString("F1") + "s";
+        }
+
         if (!comboActive) return;
 
         comboTimer -= Time.deltaTime;
@@ -68,6 +90,7 @@ public class ScoreManager : MonoBehaviour
     /// <summary>Hit an NPC — grows combo and scores multiplied points.</summary>
     public void RegisterNPCHit()
     {
+        AddTime();
         consecutiveHits++;
         currentMultiplier = Mathf.Min(1 + (consecutiveHits - 1) * multiplierStep, maxMultiplier);
 
@@ -87,6 +110,7 @@ public class ScoreManager : MonoBehaviour
     /// <summary>Hit a prop (light post, traffic light, etc.) — flat points, no multiplier effect.</summary>
     public void RegisterPropHit()
     {
+        AddTime();
         AddScore(propHitPoints);
         ShowFeedback($"+{propHitPoints}", Color.white);
         Debug.Log($"[Score] Prop Hit! +{propHitPoints} | Total: {totalScore}");
@@ -96,6 +120,7 @@ public class ScoreManager : MonoBehaviour
     /// <summary>Hit a wall or building — penalty and combo reset.</summary>
     public void RegisterWallHit()
     {
+        AddTime();
         AddScore(-wallHitPenalty);
         ResetCombo(silent: false);
         ShowFeedback($"-{wallHitPenalty}  WALL!", Color.red);
@@ -106,6 +131,14 @@ public class ScoreManager : MonoBehaviour
     // ------------------------------------------------------------------ //
     // Internal helpers
     // ------------------------------------------------------------------ //
+
+    private void AddTime()
+    {
+        if (!isGameOver)
+        {
+            currentGlobalTime += timeAddedPerHit;
+        }
+    }
 
     private void AddScore(int amount)
     {
