@@ -3,13 +3,17 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
-/// Casts a ray from the right controller and interacts with World Space UI buttons.
-/// Attach to a child of the right hand anchor (or anywhere — it finds the hand itself).
+/// Casts a ray from the right Touch controller and interacts with World Space UI buttons.
 ///
-/// SETUP:
-///   1. Create an empty child under OVRCameraRig > TrackingSpace > RightHandAnchor
-///   2. Rename it "RayPointer" and attach this script
-///   3. Assign the lineRenderer field (add a LineRenderer component to RayPointer)
+/// Robust against customised OVR rigs (e.g. ones that have extra
+/// "*Detached" anchors). On Start we:
+///   1. Find the live RightHandAnchor (preferring the property on OVRCameraRig,
+///      falling back to a name search inside the rig).
+///   2. Reparent THIS GameObject under that anchor and zero its local pose.
+///   3. Use OUR transform to draw the line — guaranteed to follow the controller.
+///
+/// If no anchor is found (e.g. OpenXR rig), we read controller pose from
+/// OVRInput each frame as a fallback.
 /// </summary>
 public class VRRayPointer : MonoBehaviour
 {
@@ -25,17 +29,21 @@ public class VRRayPointer : MonoBehaviour
     [Header("Dot at hit point (optional)")]
     public GameObject hitDotPrefab;             // small sphere to show where ray lands
 
+    [Header("Controller")]
+    [Tooltip("Which Touch controller drives the ray.")]
+    public OVRInput.Controller controller = OVRInput.Controller.RTouch;
+
     // ------------------------------------------------------------------ //
 
-    private Transform rightHand;
+    private Transform handAnchor;        // the live tracked anchor we parented to
+    private Transform trackingSpace;     // used by the OVRInput fallback path
+    private bool useOvrInputFallback;    // true when no anchor was found
     private GameObject currentHover;
     private GameObject hitDotInstance;
 
     void Start()
     {
-        // Find right hand anchor
-        OVRCameraRig rig = Object.FindFirstObjectByType<OVRCameraRig>();
-        if (rig != null) rightHand = rig.rightHandAnchor;
+        AttachToHand();
 
         SetupLineRenderer();
 
@@ -46,12 +54,82 @@ public class VRRayPointer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Find the live right-hand anchor and parent ourselves to it so our
+    /// transform.position / transform.forward exactly match the controller.
+    /// </summary>
+    private void AttachToHand()
+    {
+        OVRCameraRig rig = Object.FindFirstObjectByType<OVRCameraRig>();
+
+        // Preferred: the property on the rig
+        if (rig != null && rig.rightHandAnchor != null)
+        {
+            handAnchor = rig.rightHandAnchor;
+            trackingSpace = rig.trackingSpace;
+        }
+
+        // Fallback: search by exact name inside the rig (skip *Detached etc.)
+        if (handAnchor == null && rig != null)
+        {
+            foreach (Transform t in rig.GetComponentsInChildren<Transform>(true))
+            {
+                if (t.name == "RightHandAnchor")
+                {
+                    handAnchor = t;
+                    break;
+                }
+                if (trackingSpace == null && t.name == "TrackingSpace")
+                    trackingSpace = t;
+            }
+        }
+
+        // Last fallback: any GameObject called "RightHandAnchor" anywhere in scene
+        if (handAnchor == null)
+        {
+            GameObject byName = GameObject.Find("RightHandAnchor");
+            if (byName != null) handAnchor = byName.transform;
+        }
+
+        if (handAnchor != null)
+        {
+            transform.SetParent(handAnchor, worldPositionStays: false);
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+            useOvrInputFallback = false;
+            Debug.Log($"[RayPointer] Attached under {handAnchor.name}.");
+        }
+        else
+        {
+            // No anchor — drive ourselves from OVRInput each frame.
+            useOvrInputFallback = true;
+            Debug.LogWarning("[RayPointer] No RightHandAnchor found — using OVRInput fallback.");
+        }
+    }
+
     void Update()
     {
-        if (rightHand == null) return;
+        // If we're using the fallback, drive OUR transform from OVRInput so the
+        // rest of the code below is identical to the parented case.
+        if (useOvrInputFallback)
+        {
+            Vector3 localPos = OVRInput.GetLocalControllerPosition(controller);
+            Quaternion localRot = OVRInput.GetLocalControllerRotation(controller);
 
-        Vector3 origin    = rightHand.position;
-        Vector3 direction = rightHand.forward;
+            if (trackingSpace != null)
+            {
+                transform.position = trackingSpace.TransformPoint(localPos);
+                transform.rotation = trackingSpace.rotation * localRot;
+            }
+            else
+            {
+                transform.localPosition = localPos;
+                transform.localRotation = localRot;
+            }
+        }
+
+        Vector3 origin    = transform.position;
+        Vector3 direction = transform.forward;
 
         // Draw ray
         if (lineRenderer != null)
@@ -63,26 +141,22 @@ public class VRRayPointer : MonoBehaviour
         // Raycast against UI
         if (Physics.Raycast(origin, direction, out RaycastHit hit, rayLength, uiLayer))
         {
-            // Hit something on UI layer
             Button btn = hit.collider.GetComponentInParent<Button>();
 
             if (btn != null && btn.gameObject != currentHover)
             {
-                // Unhover previous
                 UnhoverCurrent();
                 currentHover = btn.gameObject;
                 SetLineColor(hoverColor);
             }
 
-            // Show dot
             if (hitDotInstance != null)
             {
                 hitDotInstance.SetActive(true);
                 hitDotInstance.transform.position = hit.point;
             }
 
-            // Trigger click on index trigger press
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, controller))
             {
                 if (btn != null)
                 {

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5195c154790dd5b4594473476fa8da29, type: 3}
+  m_Name: CarData
+  m_EditorClassIdentifier: Assembly-CSharp::CarData
+  carName: Sedan
+  description: A reliable all-rounder.
+  carPrefab: {fileID: 4838671144867827712, guid: a9fcfb34b81d83c46b1de07ee7dc517b, type: 3}
+  previewSprite: {fileID: 0}
+  accentColor: {r: 0.3584906, g: 0.15624776, b: 0.15624776, a: 1}
+  speedRating: 1
+  handlingRating: 3
+  weightRating: 3

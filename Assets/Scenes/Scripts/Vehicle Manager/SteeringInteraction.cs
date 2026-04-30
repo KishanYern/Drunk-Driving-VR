@@ -1,63 +1,72 @@
-﻿using UnityEngine;
+using UnityEngine;
 
+/// <summary>
+/// Steering wheel grab — supports ONE or TWO hands simultaneously.
+///
+/// • One hand:  that hand drives the wheel angle directly.
+/// • Two hands: the angle is averaged from both grabs, giving a natural
+///              two-handed steering feel.
+/// • Release one hand while the other is still holding → seamlessly
+///              continues with the remaining hand.
+///
+/// Calls DriverHandsController to snap hand meshes to the rim on grab
+/// and restore them on release.
+/// </summary>
 public class SteeringWheelInteraction_OVR : MonoBehaviour
 {
     [Header("References")]
     public VehicleManager vehicleManager;
 
+    [Tooltip("Drag the Cars GameObject here — it has the DriverHandsController on it.")]
+    public DriverHandsController driverHands;
+
     [Header("Steering Settings")]
-    public float grabDistance = 0.2f;
-    [Tooltip("Total degrees the physical wheel can rotate each way (e.g. 450 = 1.25 turns)")]
+    [Tooltip("How close (metres) a hand must be to the wheel centre to grab.")]
+    public float grabDistance = 0.25f;
+
+    [Tooltip("Max degrees the wheel can rotate each way.")]
     public float maxSteeringAngle = 90f;
-    [Tooltip("How quickly the wheel self-centres after release (degrees per second)")]
+
+    [Tooltip("How fast the wheel self-centres when both hands are released.")]
     public float centreReturnSpeed = 360f;
 
-    [Header("Hand Lock Settings")]
-    [Tooltip("Assign the left hand visual GameObject (the rendered hand mesh, not the anchor)")]
-    public GameObject leftHandVisual;
-    [Tooltip("Assign the right hand visual GameObject (the rendered hand mesh, not the anchor)")]
-    public GameObject rightHandVisual;
-    [Tooltip("A small sphere or hand-shaped mesh to show the locked grab point on the rim")]
-    public GameObject grabMarkerPrefab;
-
     [Header("Interaction Feedback")]
-    [Tooltip("Material to swap to when a hand is close enough to grab")]
     public Material highlightMaterial;
 
-    // ------------------------------------------------------------------ //
-    // Private state
-    // ------------------------------------------------------------------ //
-    private Transform leftHand;
-    private Transform rightHand;
+    // ── Private: per-hand grab state ──────────────────────────────────────  //
 
-    private bool isGrabbing = false;
-    private Transform activeHand = null;
+    private Transform leftHandAnchor;
+    private Transform rightHandAnchor;
 
-    private float currentWheelAngle = 0f;
-    private Vector3 grabLocalOffset;          // contact point in wheel-local XZ at grab start
-    private float angleAtGrabStart;         // wheel angle at grab start
+    // Each hand tracks its own grab independently
+    private bool    leftGrabbing       = false;
+    private bool    rightGrabbing      = false;
+    private Vector3 leftGrabOffset;      // hand pos in wheel-local XZ at grab start
+    private Vector3 rightGrabOffset;
+    private float   leftAngleAtStart;
+    private float   rightAngleAtStart;
 
+    // One grab anchor per hand, parented to the wheel
+    private Transform leftGrabAnchor;
+    private Transform rightGrabAnchor;
+
+    private float     currentWheelAngle = 0f;
     private Quaternion initialWheelRotation;
 
-    // The grab anchor lives as a child of the wheel and rotates with it.
-    // It is placed at the contact point in local space when the grab starts.
-    private Transform grabAnchor;
-    private GameObject grabMarkerInstance;
+    // Highlight
+    private Renderer  wheelRenderer;
+    private Material  originalMaterial;
+    private bool      isHighlighted = false;
 
-    // Feedback
-    private Renderer wheelRenderer;
-    private Material originalMaterial;
-    private bool isHighlighted = false;
-
-    // ------------------------------------------------------------------ //
+    // ── Init ──────────────────────────────────────────────────────────────  //
 
     void Start()
     {
-        OVRCameraRig rig = FindObjectOfType<OVRCameraRig>();
+        OVRCameraRig rig = Object.FindFirstObjectByType<OVRCameraRig>();
         if (rig != null)
         {
-            leftHand = rig.leftHandAnchor;
-            rightHand = rig.rightHandAnchor;
+            leftHandAnchor  = rig.leftHandAnchor;
+            rightHandAnchor = rig.rightHandAnchor;
         }
 
         initialWheelRotation = transform.localRotation;
@@ -66,185 +75,186 @@ public class SteeringWheelInteraction_OVR : MonoBehaviour
         if (wheelRenderer != null)
             originalMaterial = wheelRenderer.material;
 
-        // Create the grab anchor once and reuse it — cheaper than Instantiate each grab
-        GameObject anchorGO = new GameObject("_GrabAnchor");
-        anchorGO.transform.SetParent(transform);
-        anchorGO.transform.localPosition = Vector3.zero;
-        anchorGO.transform.localRotation = Quaternion.identity;
-        grabAnchor = anchorGO.transform;
+        // Two reusable anchors, both children of the wheel
+        leftGrabAnchor  = CreateAnchor("_GrabAnchor_L");
+        rightGrabAnchor = CreateAnchor("_GrabAnchor_R");
+
+        if (driverHands == null)
+            driverHands = Object.FindFirstObjectByType<DriverHandsController>();
     }
+
+    private Transform CreateAnchor(string goName)
+    {
+        var go = new GameObject(goName);
+        go.transform.SetParent(transform);
+        go.transform.localPosition = Vector3.zero;
+        go.transform.localRotation = Quaternion.identity;
+        return go.transform;
+    }
+
+    // ── Update ────────────────────────────────────────────────────────────  //
 
     void Update()
     {
         UpdateHighlight();
-        HandleGrabInput();
-
-        if (isGrabbing && activeHand != null)
-            UpdateSteering();
-        else
-            CentreWheel();
-
-        ApplyWheelRotation();
+        HandleLeftHand();
+        HandleRightHand();
+        ComputeAndApplySteering();
         SendSteeringValue();
     }
 
-    // ------------------------------------------------------------------ //
-    // Proximity highlight
-    // ------------------------------------------------------------------ //
+    // ── Per-hand input ────────────────────────────────────────────────────  //
 
-    private void UpdateHighlight()
+    private void HandleLeftHand()
     {
-        if (wheelRenderer == null || highlightMaterial == null) return;
+        bool triggerHeld = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch);
+        bool nearWheel   = leftHandAnchor != null &&
+                           Vector3.Distance(transform.position, leftHandAnchor.position) < grabDistance;
 
-        bool handNear = (leftHand != null && Vector3.Distance(transform.position, leftHand.position) < grabDistance)
-                     || (rightHand != null && Vector3.Distance(transform.position, rightHand.position) < grabDistance);
-
-        if (handNear && !isHighlighted)
+        if (!leftGrabbing)
         {
-            wheelRenderer.material = highlightMaterial;
-            isHighlighted = true;
-        }
-        else if (!handNear && !isGrabbing && isHighlighted)
-        {
-            wheelRenderer.material = originalMaterial;
-            isHighlighted = false;
-        }
-    }
-
-    // ------------------------------------------------------------------ //
-    // Grab input
-    // ------------------------------------------------------------------ //
-
-    private void HandleGrabInput()
-    {
-        if (!isGrabbing)
-        {
-            if (leftHand != null
-                && Vector3.Distance(transform.position, leftHand.position) < grabDistance
-                && OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
-            {
-                BeginGrab(leftHand, leftHandVisual);
-            }
-            else if (rightHand != null
-                && Vector3.Distance(transform.position, rightHand.position) < grabDistance
-                && OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
-            {
-                BeginGrab(rightHand, rightHandVisual);
-            }
+            if (nearWheel && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
+                BeginGrab(isLeft: true);
         }
         else
         {
-            OVRInput.Controller ctrl = (activeHand == leftHand)
-                ? OVRInput.Controller.LTouch
-                : OVRInput.Controller.RTouch;
-
-            if (!OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, ctrl))
-                EndGrab();
+            if (!triggerHeld)
+                EndGrab(isLeft: true);
+            else
+                UpdateGrabAnchor(isLeft: true); // keep anchor glued to real hand
         }
     }
 
-    private void BeginGrab(Transform hand, GameObject handVisual)
+    private void HandleRightHand()
     {
-        isGrabbing = true;
-        activeHand = hand;
-        angleAtGrabStart = currentWheelAngle;
+        bool triggerHeld = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch);
+        bool nearWheel   = rightHandAnchor != null &&
+                           Vector3.Distance(transform.position, rightHandAnchor.position) < grabDistance;
 
-        // --- Compute the contact point ---
-        // Project the hand into wheel-local space, flatten onto XZ plane (Y = wheel spin axis)
+        if (!rightGrabbing)
+        {
+            if (nearWheel && OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
+                BeginGrab(isLeft: false);
+        }
+        else
+        {
+            if (!triggerHeld)
+                EndGrab(isLeft: false);
+            else
+                UpdateGrabAnchor(isLeft: false);
+        }
+    }
+
+    // ── Grab / Release ────────────────────────────────────────────────────  //
+
+    private void BeginGrab(bool isLeft)
+    {
+        Transform hand   = isLeft ? leftHandAnchor  : rightHandAnchor;
+        Transform anchor = isLeft ? leftGrabAnchor  : rightGrabAnchor;
+
+        // Record contact point in wheel-local XZ (flat — Y stripped for angle math)
         Vector3 localPos = transform.InverseTransformPoint(hand.position);
-        grabLocalOffset = new Vector3(localPos.x, 0f, localPos.z);
+        Vector3 flatOffset = new Vector3(localPos.x, 0f, localPos.z);
 
-        // --- Place the grab anchor at the contact point ---
-        // Because grabAnchor is a child of the wheel, it will rotate WITH the wheel
-        // every frame, making it a true locked-on-rim reference point.
-        grabAnchor.localPosition = localPos;
-        grabAnchor.localRotation = Quaternion.identity;
+        anchor.localPosition = localPos;
+        anchor.localRotation = Quaternion.identity;
 
-        // --- Spawn a visible marker at the contact point on the rim ---
-        if (grabMarkerPrefab != null)
+        if (isLeft)
         {
-            if (grabMarkerInstance != null) Destroy(grabMarkerInstance);
-            grabMarkerInstance = Instantiate(grabMarkerPrefab, grabAnchor);
-            grabMarkerInstance.transform.localPosition = Vector3.zero;
-            grabMarkerInstance.transform.localScale = Vector3.one * 0.025f;
+            leftGrabbing      = true;
+            leftGrabOffset    = flatOffset;
+            leftAngleAtStart  = currentWheelAngle;
+        }
+        else
+        {
+            rightGrabbing     = true;
+            rightGrabOffset   = flatOffset;
+            rightAngleAtStart = currentWheelAngle;
         }
 
-        // --- Hide the floating hand visual so it doesn't fight the locked position ---
-        // The hand will visually "lock" because the marker rides the wheel rim.
-        // If you have a hand mesh (not just controller model), hide it here
-        // so players see the marker on the rim instead of a detached floating hand.
-        if (handVisual != null)
-            handVisual.SetActive(false);
+        // Snap hand mesh to rim
+        if (driverHands != null)
+            driverHands.GrabWheel(isLeft, anchor);
     }
 
-    private void EndGrab()
+    private void EndGrab(bool isLeft)
     {
-        // Restore hand visual
-        GameObject activeHandVisual = (activeHand == leftHand) ? leftHandVisual : rightHandVisual;
-        if (activeHandVisual != null)
-            activeHandVisual.SetActive(true);
+        if (isLeft) leftGrabbing  = false;
+        else        rightGrabbing = false;
 
-        isGrabbing = false;
-        activeHand = null;
+        if (driverHands != null)
+            driverHands.ReleaseWheel(isLeft);
 
-        // Remove marker
-        if (grabMarkerInstance != null)
-        {
-            Destroy(grabMarkerInstance);
-            grabMarkerInstance = null;
-        }
-
-        // Restore material
-        if (wheelRenderer != null && originalMaterial != null)
+        // Restore material only when BOTH hands have released
+        if (!leftGrabbing && !rightGrabbing && wheelRenderer != null && originalMaterial != null)
         {
             wheelRenderer.material = originalMaterial;
             isHighlighted = false;
         }
     }
 
-    // ------------------------------------------------------------------ //
-    // Steering — locked contact method using grab anchor
-    // ------------------------------------------------------------------ //
-
-    private void UpdateSteering()
+    // Keep the grab anchor world-position glued to the physical hand each frame.
+    // This makes the snapped hand mesh track the controller naturally as the
+    // wheel rotates under it.
+    private void UpdateGrabAnchor(bool isLeft)
     {
-        // Project the live hand position into the wheel's current local XZ plane
-        Vector3 localPos = transform.InverseTransformPoint(activeHand.position);
+        Transform hand   = isLeft ? leftHandAnchor  : rightHandAnchor;
+        Transform anchor = isLeft ? leftGrabAnchor  : rightGrabAnchor;
+        if (hand != null) anchor.position = hand.position;
+    }
+
+    // ── Steering math ─────────────────────────────────────────────────────  //
+
+    private void ComputeAndApplySteering()
+    {
+        bool anyGrab = leftGrabbing || rightGrabbing;
+
+        if (!anyGrab)
+        {
+            // Self-centre
+            if (Mathf.Abs(currentWheelAngle) > 0.5f)
+                currentWheelAngle = Mathf.MoveTowards(currentWheelAngle, 0f, centreReturnSpeed * Time.deltaTime);
+            else
+                currentWheelAngle = 0f;
+        }
+        else
+        {
+            float totalAngle  = 0f;
+            int   grabCount   = 0;
+
+            if (leftGrabbing)
+            {
+                totalAngle += ComputeHandAngle(leftHandAnchor, leftGrabOffset, leftAngleAtStart);
+                grabCount++;
+            }
+            if (rightGrabbing)
+            {
+                totalAngle += ComputeHandAngle(rightHandAnchor, rightGrabOffset, rightAngleAtStart);
+                grabCount++;
+            }
+
+            // Average when both hands are grabbing
+            currentWheelAngle = Mathf.Clamp(totalAngle / grabCount, -maxSteeringAngle, maxSteeringAngle);
+        }
+
+        transform.localRotation = initialWheelRotation * Quaternion.Euler(0f, currentWheelAngle, 0f);
+    }
+
+    /// <summary>
+    /// Returns the steering angle contribution from a single hand.
+    /// Uses the same absolute-angle method as before — no drift.
+    /// </summary>
+    private float ComputeHandAngle(Transform hand, Vector3 grabOffset, float angleAtStart)
+    {
+        if (hand == null) return angleAtStart;
+
+        Vector3 localPos      = transform.InverseTransformPoint(hand.position);
         Vector3 currentOffset = new Vector3(localPos.x, 0f, localPos.z);
 
-        if (currentOffset.sqrMagnitude < 0.0001f) return;
+        if (currentOffset.sqrMagnitude < 0.0001f) return angleAtStart;
 
-        // SignedAngle from the ORIGINAL grab offset (not last frame) to the current hand.
-        // This is absolute — no per-frame accumulation, no drift.
-        // The result is how far the hand has rotated around the rim since grab start.
-        float angleDelta = Vector3.SignedAngle(grabLocalOffset, currentOffset, Vector3.up);
-
-        currentWheelAngle = Mathf.Clamp(
-            angleAtGrabStart + angleDelta,
-            -maxSteeringAngle,
-            maxSteeringAngle
-        );
-
-        // Move the grab anchor in world space to sit exactly under the real hand.
-        // This keeps the marker glued to where your physical hand is touching.
-        // Since grabAnchor is a child of the wheel, this also implicitly shows
-        // the difference between "where your hand is" and "where the rim is."
-        grabAnchor.position = activeHand.position;
-    }
-
-    // ------------------------------------------------------------------ //
-
-    private void CentreWheel()
-    {
-        if (Mathf.Abs(currentWheelAngle) < 0.5f) { currentWheelAngle = 0f; return; }
-        currentWheelAngle = Mathf.MoveTowards(currentWheelAngle, 0f, centreReturnSpeed * Time.deltaTime);
-    }
-
-    private void ApplyWheelRotation()
-    {
-        // Wheel rotates around local Y — confirmed from your measured transforms.
-        // Negate currentWheelAngle if left/right is inverted in-game.
-        transform.localRotation = initialWheelRotation * Quaternion.Euler(0f, currentWheelAngle, 0f);
+        float delta = Vector3.SignedAngle(grabOffset, currentOffset, Vector3.up);
+        return angleAtStart + delta;
     }
 
     private void SendSteeringValue()
@@ -252,6 +262,32 @@ public class SteeringWheelInteraction_OVR : MonoBehaviour
         if (vehicleManager == null) return;
         vehicleManager.SetSteering(currentWheelAngle / maxSteeringAngle);
     }
+
+    // ── Highlight ─────────────────────────────────────────────────────────  //
+
+    private void UpdateHighlight()
+    {
+        if (wheelRenderer == null || highlightMaterial == null) return;
+
+        bool handNear =
+            (leftHandAnchor  != null && Vector3.Distance(transform.position, leftHandAnchor.position)  < grabDistance) ||
+            (rightHandAnchor != null && Vector3.Distance(transform.position, rightHandAnchor.position) < grabDistance);
+
+        bool anyGrabbing = leftGrabbing || rightGrabbing;
+
+        if (handNear && !isHighlighted)
+        {
+            wheelRenderer.material = highlightMaterial;
+            isHighlighted = true;
+        }
+        else if (!handNear && !anyGrabbing && isHighlighted)
+        {
+            wheelRenderer.material = originalMaterial;
+            isHighlighted = false;
+        }
+    }
+
+    // ── Gizmos ────────────────────────────────────────────────────────────  //
 
     void OnDrawGizmosSelected()
     {

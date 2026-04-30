@@ -10,6 +10,13 @@ public class CityTileManager : MonoBehaviour
     [Header("Settings")]
     public int viewDistance = 2;
 
+    [Header("NPC Spawning")]
+    [Tooltip("Assign the NPCSpawner object from the scene. Leave empty to disable per-tile NPC spawning.")]
+    public NPCSpawner npcSpawner;
+
+    [Tooltip("How many NPCs to spawn on each city tile.")]
+    public int npcsPerTile = 10;
+
     private Dictionary<Vector2Int, GameObject> activeTiles = new();
     private Vector3 citySize;
 
@@ -61,10 +68,21 @@ public class CityTileManager : MonoBehaviour
                 GameObject tile = Instantiate(cityPrefab, spawnPos, Quaternion.identity);
                 tile.name = $"City_{coord.x}_{coord.y}";
                 activeTiles[coord] = tile;
+
+                // Spawn NPCs for this tile.
+                // They are parented to the tile so they are destroyed automatically
+                // when the tile is despawned — no separate cleanup needed.
+                if (npcSpawner != null && npcsPerTile > 0)
+                {
+                    // Center of the tile in world space
+                    Vector3 tileCenter = spawnPos + new Vector3(citySize.x * 0.5f, 0f, citySize.z * 0.5f);
+                    Vector2 tileArea   = new Vector2(citySize.x, citySize.z);
+                    npcSpawner.SpawnNPCsForTile(tileCenter, tileArea, npcsPerTile, tile.transform);
+                }
             }
         }
 
-        // Despawn far tiles
+        // Despawn far tiles (child NPCs are destroyed automatically with them)
         List<Vector2Int> toRemove = new();
         foreach (var kv in activeTiles)
         {

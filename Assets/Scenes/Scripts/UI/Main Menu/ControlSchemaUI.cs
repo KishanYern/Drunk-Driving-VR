@@ -5,10 +5,26 @@ using UnityEngine.UI;
 
 /// <summary>
 /// Shows a "How to Play" control guide panel when the game scene loads.
-/// The panel floats in front of the player and is dismissed by pressing
-/// the left controller A/X button or the on-screen Dismiss button.
+/// Driving input is LOCKED until the player dismisses this panel.
 ///
-/// Attach this to a GameObject in your Final_Driving_Sim scene.
+/// Dismissal: press X (left controller) or tap the on-screen button.
+///
+/// PANEL SETUP (World Space Canvas in Final_Driving_Sim scene):
+///
+///  ControlGuidePanel (Canvas — World Space, 700×500, scale 0.002)
+///  ├── Background        (Image, dark semi-transparent)
+///  ├── TitleText         (TMP)  "HOW TO DRIVE"
+///  ├── ControlsGrid      (Grid Layout Group — 2 columns)
+///  │   ├── Row: [🎮 icon]  "RIGHT TRIGGER"     "Accelerate"
+///  │   ├── Row: [🎮 icon]  "LEFT TRIGGER"      "Brake / Reverse"
+///  │   ├── Row: [🎮 icon]  "STEERING WHEEL"    "Grab rim + twist to steer"
+///  │   ├── Row: [🎮 icon]  "LEFT STICK"        "Look around (comfort turn)"
+///  │   └── Row: [🎮 icon]  "X / Y BUTTON"      "Dismiss this guide"
+///  ├── DismissHintText   (TMP)  — assign dismissHintText
+///  └── DismissButton     (Button) "GOT IT — START DRIVING"  — assign dismissButton
+///
+/// Attach this script to a GameObject in Final_Driving_Sim.
+/// Assign the ControlGuidePanel canvas and the CarController2_VR in the Inspector.
 /// </summary>
 public class ControlSchemaUI : MonoBehaviour
 {
@@ -16,17 +32,22 @@ public class ControlSchemaUI : MonoBehaviour
     [Tooltip("The World Space Canvas showing the control guide.")]
     public GameObject controlPanel;
 
-    [Tooltip("How far in front of the player the guide appears.")]
+    [Tooltip("How far in front of the player the guide appears (metres).")]
     public float panelDistance = 1.8f;
 
     [Tooltip("Height offset from eye level (negative = lower).")]
     public float panelHeightOffset = 0f;
 
-    [Header("Dismiss Settings")]
-    [Tooltip("The on-screen dismiss button.")]
+    [Header("Car Controller")]
+    [Tooltip("Assign the CarController2_VR on the player's car. " +
+             "Driving input will be locked until this panel is dismissed.")]
+    public CarController2_VR carController;
+
+    [Header("Dismiss")]
+    [Tooltip("The on-screen 'Got It' button.")]
     public Button dismissButton;
 
-    [Tooltip("Show a 'press X to dismiss' hint on the panel.")]
+    [Tooltip("Hint text at the bottom of the panel (auto-populated).")]
     public TMP_Text dismissHintText;
 
     [Header("Fade")]
@@ -40,9 +61,21 @@ public class ControlSchemaUI : MonoBehaviour
 
     void Start()
     {
+        // Find VR camera head
         OVRCameraRig rig = Object.FindFirstObjectByType<OVRCameraRig>();
         if (rig != null) playerHead = rig.centerEyeAnchor;
         if (playerHead == null && Camera.main != null) playerHead = Camera.main.transform;
+
+        // Auto-find car controller if not assigned
+        if (carController == null)
+            carController = Object.FindFirstObjectByType<CarController2_VR>();
+
+        // Lock driving input immediately
+        if (carController != null)
+        {
+            carController.inputLocked = true;
+            Debug.Log("[ControlSchema] Car input LOCKED — waiting for player to dismiss guide.");
+        }
 
         if (controlPanel != null)
         {
@@ -51,8 +84,9 @@ public class ControlSchemaUI : MonoBehaviour
                 canvasGroup = controlPanel.AddComponent<CanvasGroup>();
 
             canvasGroup.alpha = 1f;
+            controlPanel.SetActive(false); // hidden until ShowPanel() fires
 
-            // Small delay so the player fully loads in before showing guide
+            // Small delay so the player fully loads in before the guide pops up
             Invoke(nameof(ShowPanel), 1.5f);
         }
 
@@ -60,7 +94,7 @@ public class ControlSchemaUI : MonoBehaviour
             dismissButton.onClick.AddListener(DismissPanel);
 
         if (dismissHintText != null)
-            dismissHintText.text = "Press  X  or tap below to dismiss";
+            dismissHintText.text = "Press  X  on the left controller, or tap below to start driving";
     }
 
     void Update()
@@ -74,6 +108,8 @@ public class ControlSchemaUI : MonoBehaviour
             DismissPanel();
         }
     }
+
+    // ------------------------------------------------------------------ //
 
     private void ShowPanel()
     {
@@ -100,6 +136,14 @@ public class ControlSchemaUI : MonoBehaviour
     {
         if (isDismissed) return;
         isDismissed = true;
+
+        // Unlock driving as soon as the player confirms they've read the guide
+        if (carController != null)
+        {
+            carController.inputLocked = false;
+            Debug.Log("[ControlSchema] Car input UNLOCKED — player is ready to drive.");
+        }
+
         StartCoroutine(FadeOut());
     }
 

@@ -11,6 +11,12 @@ using UnityEngine.XR;
 
 public class CarController2_VR : MonoBehaviour
 {
+    /// <summary>
+    /// When true, all driving input is ignored.
+    /// Set to true by ControlSchemaUI until the player dismisses the control guide.
+    /// </summary>
+    [HideInInspector] public bool inputLocked = false;
+
     // Set every frame by SteeringWheelInteraction_OVR via VehicleManager.SetSteering()
     private float externalSteeringInput = 0f;
     public void SetExternalSteering(float value)
@@ -197,6 +203,13 @@ public class CarController2_VR : MonoBehaviour
 
     void HandleInput()
     {
+        // Block all input while the control guide is visible
+        if (inputLocked)
+        {
+            ThrottleOff();
+            return;
+        }
+
         float rightTrigger = 0f;
         float leftTrigger = 0f;
         float keyboardSteering = 0f;
