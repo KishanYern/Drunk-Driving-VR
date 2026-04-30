@@ -28,8 +28,10 @@ public class DrunkEffect : MonoBehaviour
     [Tooltip("The maximum horizontal offset for the double vision when fully impaired")]
     public float maxDoubleVisionOffset = 0.02f;
 
-    [Header("Input Settings")]
-    [Tooltip("Keyboard key to press to take a sip and increase drunkenness")]
+    [Header("Input Settings (Debug Only)")]
+    [Tooltip("If true, the keyboard key below also triggers a sip. Leave OFF in builds — drunkenness should come from drinking the bottle.")]
+    public bool debugKeyboardSip = false;
+    [Tooltip("Keyboard key used only when debugKeyboardSip is enabled.")]
     public UnityEngine.InputSystem.Key drinkKey = UnityEngine.InputSystem.Key.B;
 
     private float impairmentLevel = 0f;
@@ -75,8 +77,10 @@ public class DrunkEffect : MonoBehaviour
 
     void Update()
     {
-        // Simple keyboard button to take a sip (using the new Input System)
-        if (UnityEngine.InputSystem.Keyboard.current != null && 
+        // Sips now come from drinking the bottle (BottleGrabbable.AddSip).
+        // Keyboard input is only available as an opt-in debug aid.
+        if (debugKeyboardSip &&
+            UnityEngine.InputSystem.Keyboard.current != null &&
             UnityEngine.InputSystem.Keyboard.current[drinkKey].wasPressedThisFrame)
         {
             AddSip();

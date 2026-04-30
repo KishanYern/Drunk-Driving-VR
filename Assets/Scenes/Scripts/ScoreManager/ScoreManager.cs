@@ -127,6 +127,20 @@ public class ScoreManager : MonoBehaviour
                 globalTimerText.color = currentGlobalTime <= 10f ? Color.red : Color.white;
             }
         }
+        else
+        {
+            // Game-over: listen for any "go" button so the player can restart
+            // without needing the VR ray to land on the overlay-canvas button.
+            // A / X on either Touch controller, or either index trigger.
+            if (OVRInput.GetDown(OVRInput.Button.One)               // A or X
+             || OVRInput.GetDown(OVRInput.Button.Two)               // B or Y
+             || OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger,   OVRInput.Controller.RTouch)
+             || OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger,   OVRInput.Controller.LTouch))
+            {
+                RestartScene();
+                return;
+            }
+        }
 
         if (!comboActive) return;
 
@@ -206,6 +220,12 @@ public class ScoreManager : MonoBehaviour
 
         RefreshHighScoreUI();
         RefreshLeaderboardUI();
+
+        // Append restart hint so the user knows how to retry (the on-screen
+        // Restart button can't be ray-clicked because the panel is on an
+        // OVROverlayCanvas — see Update() for the actual key handling).
+        if (leaderboardText != null)
+            leaderboardText.text += "\n\nPress  A  or  Trigger  to Restart";
 
         // Show the leaderboard panel with restart button
         if (leaderboardPanel != null)

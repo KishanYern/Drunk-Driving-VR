@@ -19,11 +19,13 @@ public class NPCSteeringBehavior : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         movementScript = GetComponent<SimpleNPCMovement>();
 
-        // Adding gravity fixes the "flying" issue! 
-        npcRigidbody.useGravity = true;
-        
-        // We freeze their rotation so they don't fall over while walking normally
-        npcRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+        // While walking normally the NavMeshAgent OWNS the position. Making the
+        // rigidbody kinematic stops gravity from fighting the agent — that fight
+        // was the source of the floating + tilt wobble.
+        npcRigidbody.isKinematic   = true;
+        npcRigidbody.useGravity    = false;
+        npcRigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+        npcRigidbody.constraints   = RigidbodyConstraints.FreezeRotation;
 
         // Auto-find the player's car if you haven't assigned it in the Inspector
         if (playerCar == null)
@@ -34,6 +36,24 @@ public class NPCSteeringBehavior : MonoBehaviour
                 playerCar = cars[0].transform;
             }
         }
+    }
+
+    /// <summary>
+    /// Switch the NPC out of nav-mesh control and into full ragdoll-style physics.
+    /// Called when the car gets close enough to evade, or when actually hit.
+    /// </summary>
+    private void EnterPhysicsMode()
+    {
+        if (isEvading) return;
+        isEvading = true;
+
+        if (agent != null) agent.enabled = false;
+        if (movementScript != null) movementScript.enabled = false;
+
+        // Hand control over to physics
+        npcRigidbody.isKinematic = false;
+        npcRigidbody.useGravity  = true;
+        npcRigidbody.constraints = RigidbodyConstraints.None;
     }
 
     void FixedUpdate()
@@ -48,21 +68,12 @@ public class NPCSteeringBehavior : MonoBehaviour
         // Reduced distance to 5 meters so it doesn't trigger across the whole map
         if (distance < 5.0f && distance > 0.1f)
         {
-            if (!isEvading)
-            {
-                isEvading = true;
-                // Turn off NavMesh navigation so Unity's physics system can take over
-                if (agent != null) agent.enabled = false;
-                if (movementScript != null) movementScript.enabled = false;
-                
-                // Allow them to tumble!
-                npcRigidbody.constraints = RigidbodyConstraints.None;
-            }
+            EnterPhysicsMode();
 
             // Clamp distance to 1 so the force doesn't mathematically explode to infinity when very close
             float safeDist = Mathf.Max(distance, 1.0f);
             float forceMagnitude = repulsionStrength / (safeDist * safeDist);
-            
+
             Vector3 repulsionVector = directionToCar.normalized * forceMagnitude;
 
             // Notice we removed the upward vector here. This just pushes them aside linearly!
@@ -77,14 +88,8 @@ public class NPCSteeringBehavior : MonoBehaviour
         // This stops them from bouncing if they just fall 2 feet to the ground when spawning.
         if (collision.gameObject.GetComponentInParent<CarController2_VR>() != null)
         {
-            if (!isEvading)
-            {
-                isEvading = true;
-                if (agent != null) agent.enabled = false;
-                if (movementScript != null) movementScript.enabled = false;
-                npcRigidbody.constraints = RigidbodyConstraints.None;
-            }
-            
+            EnterPhysicsMode();
+
             // THIS is where the satisfying flying upward explosion happens!
             npcRigidbody.AddForce(collision.impulse * 3f + Vector3.up * 15f, ForceMode.Impulse);
         }

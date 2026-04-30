@@ -116,10 +116,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.4452629
+  m_Height: 2.2317595
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.76, z: -0.05473709}
 --- !u!195 &8220700161043726129
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -139,7 +139,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 1
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &7623801743900411247
@@ -156,6 +156,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SimpleNPCMovement
   wanderRadius: 20
   waitTime: 3
+  walkSpeed: 1.63
+  turnSpeed: 90
+  acceleration: 2
+  baseOffset: 0
 --- !u!54 &4868391589083824943
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -180,7 +184,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &3606862572115784031
@@ -197,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPCSteeringBehavior
   playerCar: {fileID: 0}
   detectionRadius: 15
-  repulsionStrength: 50
+  repulsionStrength: 100
 --- !u!114 &4579325314536185235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +222,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e2e8114a1a16102469692039e7aa8d12, type: 3}
   - {fileID: 8300000, guid: d7d3896017aab9e49bf2a3ffc20faab6, type: 3}
   - {fileID: 8300000, guid: eb7ca0d8308ef494f8cff3cd64dfd7fc, type: 3}
-  impactClip: {fileID: 0}
+  - {fileID: 8300000, guid: 52295227c6db7cb47820840985f364ff, type: 3}
+  impactClip: {fileID: 8300000, guid: c72609d433801d94bb64f27439dda53f, type: 3}
 --- !u!1001 &7332811781398491454
 PrefabInstance:
   m_ObjectHideFlags: 0
